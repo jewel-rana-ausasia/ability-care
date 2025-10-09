@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function AmIEligibleSection() {
   return (
-    <section className="w-full flex flex-col md:flex-row h-auto md:h-[300px] overflow-hidden">
+    <section className="w-full flex flex-col md:flex-row h-auto md:h-[400px] overflow-hidden">
       {/* LEFT: Purple background (center aligned) */}
       <div className="relative w-full md:w-1/2 h-[250px] md:h-auto bg-[#9C55A1]">
         <div className="absolute inset-0 right-10 flex flex-col justify-center items-center text-center text-white px-10 md:px-32">

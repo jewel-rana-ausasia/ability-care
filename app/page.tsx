@@ -1,19 +1,18 @@
-import Image from "next/image";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import ServicesSection from "./components/ServicesSection";
-import TestimonialsSection from "./components/TestimonialsSection";
-import HeroSection from "./components/Hero";
-import HeroFooter from "./components/HeroFooter";
-import OurBlogSection from "./components/OurBlogSection";
-import AmIEligibleSection from "./components/AmIEligibleSection";
-import ContactSection from "./components/ContactSection";
+import AmIEligibleSection from "@/components/AmIEligibleSection";
+import ContactSection from "@/components/ContactSection";
+import FAQSection from "@/components/FaqSection";
+import Footer from "@/components/Footer";
+import HeroSection from "@/components/Hero";
+import HeroFooter from "@/components/HeroFooter";
+import Navbar from "@/components/Navbar";
+import OurBlogSection from "@/components/OurBlogSection";
+import ServicesSection from "@/components/ServicesSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 
 export default function Home() {
   return (
    <div>
     <Navbar />
-    {/* <Hero /> */}
     <HeroSection />
     <HeroFooter/>
     <ServicesSection />
@@ -21,6 +20,8 @@ export default function Home() {
     <OurBlogSection />
     <AmIEligibleSection />
     <ContactSection />
+    <FAQSection />
+    <Footer />
    </div>
   );
 }

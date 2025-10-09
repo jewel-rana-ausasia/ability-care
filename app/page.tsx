@@ -2,8 +2,8 @@ import AmIEligibleSection from "@/components/AmIEligibleSection";
 import ContactSection from "@/components/ContactSection";
 import FAQSection from "@/components/FaqSection";
 import Footer from "@/components/Footer";
-import HeroSection from "@/components/Hero";
 import HeroFooter from "@/components/HeroFooter";
+import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import OurBlogSection from "@/components/OurBlogSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -14,7 +14,8 @@ export default function Home() {
    <div>
     <Navbar />
     <HeroSection />
-    <HeroFooter/>
+    
+    {/* <HeroFooter/> */}
     <ServicesSection />
     <TestimonialsSection/>
     <OurBlogSection />

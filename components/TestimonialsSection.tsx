@@ -43,7 +43,7 @@ const TestimonialsSection: FC = () => {
           {/* Testimonial Image Card */}
           <div className="bg-[#9C55A1] rounded-md overflow-hidden text-white relative max-w-[280px]">
             <Image
-                src="/our-testimonial.png"
+                src="/our-testimonials.jpg"
                 alt="Ability Care"
                 width={280}
                 height={280}

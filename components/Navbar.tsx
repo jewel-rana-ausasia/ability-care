@@ -39,7 +39,7 @@ const Navbar: FC = () => {
         <div className="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
-              src="/ability-logo.png"
+              src="/footer-logo.png"
               alt="Ability Care Logo"
               width={80}
               height={50}

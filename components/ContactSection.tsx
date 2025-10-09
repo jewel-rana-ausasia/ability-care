@@ -8,7 +8,7 @@ export default function ContactSection() {
   return (
     <section className="w-full py-12 lg:py-24 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center shadow-lg overflow-hidden">
-        <div className="w-full h-[600px] flex justify-around items-center bg-white shadow-2xl flex flex-col md:flex-row">
+        <div className="w-full h-[600px] flex justify-around items-center bg-white shadow-2xl flex-col md:flex-row">
           <div className="flex-1 mr-28 p-8 md:px-14 md:py-20">
             <h1 className="text-3xl font-bold text-gray-900 mb-4">
               Contact with Us

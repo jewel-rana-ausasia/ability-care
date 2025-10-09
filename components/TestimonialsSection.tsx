@@ -8,51 +8,50 @@ const TestimonialsSection: FC = () => {
   return (
     <section>
       {/* Section Header */}
-      <div
-        className="relative text-center w-full h-[500px] mx-auto mb-12 bg-[url('/why-choose-us-bg.png')] bg-cover bg-center bg-no-repeat flex flex-col items-center  px-6"
-      >
-        
+      <div className="relative text-center w-full h-[500px] mx-auto mb-12 bg-[url('/why-choose-us-bg.png')] bg-cover bg-center bg-no-repeat flex flex-col items-center  px-6">
         <div className="relative top-24 z-10 max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
             Why Choose Us?
           </h2>
           <p className="text-white leading-relaxed">
-            At our core, we are dedicated to providing high-quality, personalised
-            support that empowers individuals with disabilities to live
-            independently and with dignity. Our experienced team is committed to
-            your well-being, ensuring you receive the care and assistance you need
-            to achieve your goals. With a strong foundation of trust, respect, and
-            integrity, we go above & beyond to create a supportive and inclusive
-            environment where you feel valued and heard.
+            At our core, we are dedicated to providing high-quality,
+            personalised support that empowers individuals with disabilities to
+            live independently and with dignity. Our experienced team is
+            committed to your well-being, ensuring you receive the care and
+            assistance you need to achieve your goals. With a strong foundation
+            of trust, respect, and integrity, we go above & beyond to create a
+            supportive and inclusive environment where you feel valued and
+            heard.
           </p>
         </div>
       </div>
 
-
-      {/* Testimonial Card */} 
+      {/* Testimonial Card */}
       <div className="relative -top-36 max-w-5xl mx-auto grid md:grid-cols-2 bg-white rounded-md shadow-lg overflow-hidden border border-[#9C55A1]/20">
         {/* Left Section */}
         <div className="bg-[#F4E6F5] p-10 flex flex-col justify-center relative">
-          <span className="text-[#9C55A1] font-semibold text-sm mb-3">
-            Our Testimonials
-          </span>
-          <h3 className="text-2xl font-bold text-gray-900 leading-snug mb-8">
-            What are people saying about Ability Care?
-          </h3>
+          <div className="px-4">
+            <span className="text-[#9C55A1] font-semibold text-sm mb-3">
+              Our Testimonials
+            </span>
+            <h3 className="text-2xl font-bold text-gray-900 leading-snug mb-8">
+              What are people saying about <br/> Ability Care?
+            </h3>
+            <div className="absolute top-10 left-6 w-[3px] h-24 bg-[#9C55A1] rounded-r-md"></div>
+          </div>
 
           {/* Testimonial Image Card */}
-          <div className="bg-[#9C55A1] rounded-md overflow-hidden text-white relative max-w-[280px]">
+          <div className="rounded-md overflow-hidden text-white relative max-w-[440px]">
             <Image
-                src="/our-testimonials.jpg"
-                alt="Ability Care"
-                width={280}
-                height={280}
-                className="object-cover rounded-md"
-              />
+              src="/our-testimonials.jpg"
+              alt="Ability Care"
+              width={350}
+              height={350}
+              className="object-cover rounded-md"
+            />
           </div>
 
           {/* Left Border Accent */}
-          <div className="absolute top-10 left-6 w-[3px] h-24 bg-[#9C55A1] rounded-r-md"></div>
         </div>
 
         {/* Right Section */}

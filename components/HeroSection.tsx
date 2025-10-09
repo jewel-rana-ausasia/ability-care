@@ -64,8 +64,8 @@ export default function HeroSection() {
             <Image
               src="/hero-icon1.png" // <-- replace with your image path
               alt="NDIS Registered Provider"
-              width={400}
-              height={100}
+              width={550}
+              height={120}
               className="w-full"
             />
           </div>

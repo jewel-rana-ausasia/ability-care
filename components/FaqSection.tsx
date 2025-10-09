@@ -43,7 +43,7 @@ export default function FAQSection() {
     <section className="w-full bg-[#F5EEF6] py-16 flex flex-col items-center justify-center text-center">
       {/* Heading Section - Centered */}
       <div className="max-w-2xl mb-10">
-        <span className="bg-[#9C55A1] text-white font-semibold px-4 py-1 rounded">
+        <span className="bg-[#9C55A1] text-white font-semibold px-4 py-2 rounded">
           FAQ's
         </span>
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4">

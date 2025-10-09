@@ -9,7 +9,7 @@ const ServicesSection: FC = () => {
     <section className="bg-[#F8F1FA] py-20 px-6">
       {/* Section Header */}
       <div className="text-center mb-12">
-        <span className="bg-[#9C55A1] text-white text-xs font-semibold px-4 py-1 rounded">
+        <span className="bg-[#9C55A1] text-white  font-semibold px-4 py-2 rounded">
           Our Services
         </span>
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4">

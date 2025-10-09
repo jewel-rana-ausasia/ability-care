@@ -30,7 +30,7 @@ export default function OurBlogSection() {
   return (
     <section className="bg-[#F5EEF6] py-16 px-4 md:px-12 text-center">
       <div className="flex flex-col items-center mb-10">
-        <span className="bg-[#8c3cc7] text-white text-sm font-semibold px-4 py-1 mb-3 rounded">
+        <span className="bg-[#9C55A1] text-white font-semibold px-4 py-2 mb-3 rounded">
           Our Blog
         </span>
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900">

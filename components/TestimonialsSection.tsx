@@ -13,7 +13,7 @@ const TestimonialsSection: FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
             Why Choose Us?
           </h2>
-          <p className="text-white leading-relaxed">
+          <p className="text-white text-sm md:text-base leading-relaxed">
             At our core, we are dedicated to providing high-quality,
             personalised support that empowers individuals with disabilities to
             live independently and with dignity. Our experienced team is

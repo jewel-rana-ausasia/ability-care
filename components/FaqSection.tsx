@@ -46,24 +46,25 @@ export default function FAQSection() {
         <span className="bg-[#9C55A1] text-white font-semibold px-4 py-2 rounded">
           FAQ's
         </span>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4">
+        <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mt-4">
           Frequently Asked Questions
         </h2>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      {/* Main Content */}
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
         <Image
           src="/faq-image.png"
           alt="FAQ Image"
           width={400}
           height={400}
-          className="mx-auto md:mx-0"
+          className="mx-auto w-4/5 max-w-[300px] md:max-w-[400px] md:w-full md:mx-0"
         />
 
         {/* Right side - Accordion */}
-        <div>
-          <div className="space-y-4">
+        <div className="w-full">
+          <div className="space-y-3 md:space-y-4 px-10 md:px-0">
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index;
               return (
@@ -72,14 +73,14 @@ export default function FAQSection() {
                   className="border-b border-gray-300 pb-3 cursor-pointer"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                 >
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-base md:text-lg font-medium text-gray-800">
+                  <div className="flex justify-between items-start gap-2">
+                    <h3 className="text-sm text-left md:text-base lg:text-lg font-medium text-gray-800 flex-1">
                       {faq.question}
                     </h3>
                     {isOpen ? (
-                      <ChevronUp className="w-5 h-5 text-purple-700 transition-transform duration-300" />
+                      <ChevronUp className="w-4 h-4 md:w-5 md:h-5 text-purple-700 transition-transform duration-300 flex-shrink-0 mt-0.5" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-purple-700 transition-transform duration-300" />
+                      <ChevronDown className="w-4 h-4 md:w-5 md:h-5 text-purple-700 transition-transform duration-300 flex-shrink-0 mt-0.5" />
                     )}
                   </div>
 
@@ -91,7 +92,7 @@ export default function FAQSection() {
                       opacity: isOpen ? 1 : 0,
                     }}
                   >
-                    <p className="mt-2 text-gray-600 text-sm md:text-base">
+                    <p className="mt-2 text-gray-600 text-left text-xs md:text-sm lg:text-base">
                       {faq.answer}
                     </p>
                   </div>

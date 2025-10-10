@@ -7,9 +7,11 @@ const Footer: React.FC = () => {
       <section
         className="
           relative 
-          bg-[url('/footer.png')] 
-          py-20
-         bg-[#F5EEF6]
+          md:bg-[url('/footer.png')] 
+          py-5
+          md:py-20
+         bg-[#9C55A1]
+         md:bg-[#F5EEF6]
          text-white
         "
       >
@@ -95,17 +97,17 @@ const Footer: React.FC = () => {
       </section>
 
       <section className="bg-[#6F3C72] border-t border-[#9C55A1]">
-        <div className="max-w-7xl mx-auto px-6 text-white py-3 text-sm">
+        <div className="max-w-7xl mx-auto md:px-6 text-white py-3 text-sm">
           <div className="flex flex-col md:flex-row items-center justify-between gap-3">
             {/* Left Side */}
-            <div className="text-center md:text-left">
+            <div className="text-center text-xs md:text-base md:text-left">
               Copyright © {new Date().getFullYear()}{" "}
               <span className="font-semibold">Ability Care</span> | NDIS Website
               by <span className="font-semibold">Aus Asia Online</span>
             </div>
 
             {/* Right Side */}
-            <div className="flex flex-wrap justify-center md:justify-end gap-4 text-white font-medium">
+            <div className="flex text-xs md:text-base flex-wrap justify-center md:justify-end gap-4 text-white font-medium">
               <a href="#" className="hover:text-white transition-colors">
                 Terms of Use
               </a>

@@ -10,12 +10,11 @@ const Footer2: React.FC = () => {
           relative 
           py-5
           md:py-20
-         bg-[#9C55A1]
-         md:bg-[#4E944A]
+         bg-[#4E944A]
          text-white
         "
       >
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 items-start text-left">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 items-start text-left">
           {/* Logo & Description */}
           <div>
             <img

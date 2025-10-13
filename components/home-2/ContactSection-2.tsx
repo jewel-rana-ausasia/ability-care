@@ -9,10 +9,10 @@ export default function ContactSection2() {
         <div className="inline-block bg-[#61B95D] text-white text-sm font-medium px-4 py-2 rounded-sm mb-4">
           Contact Us
         </div>
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+        <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-2">
           Get Quote Easily By Contact with Us
         </h2>
-        <p className="text-gray-600">
+        <p className="text-gray-600 text-xs md:text-base">
           Fill a query about your need, or just a general enquiry, we would love
           to hear from you!
         </p>
@@ -22,7 +22,7 @@ export default function ContactSection2() {
         {/* White form container */}
         <div className="relative bg-white shadow-2xl rounded-2xl p-8 md:p-12">
           {/* Green card overlapping */}
-          <div className="absolute -left-6 md:-left-28 top-[17%] bg-[#61B95D] rounded-xl text-white p-8 w-[260px] md:w-[320px] shadow-xl">
+          <div className="md:absolute -left-6 md:-left-28 md:top-[17%] bg-[#61B95D] rounded-xl text-white p-8 w-full md:w-[320px] shadow-xl">
             <h3 className="text-xl font-semibold mb-6">Contact Us</h3>
             <div className="space-y-5 text-sm">
               <div className="flex items-start">

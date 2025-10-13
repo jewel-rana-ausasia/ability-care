@@ -17,10 +17,6 @@ import OurBlogSection2 from "@/components/home-2/OurBlogSection-2";
 import ServicesSection2 from "@/components/home-2/ServicesSection-2";
 import ServiceTabs2 from "@/components/home-2/ServiceTabs-2";
 import TestimonialsSection2 from "@/components/home-2/TestimonialsSection-2";
-import EligibilitySection3 from "@/components/home-3/AmIEligibleSection-3";
-import AmIEligibleSection3 from "@/components/home-3/AmIEligibleSection-3";
-import FAQSection3 from "@/components/home-3/FAQSection-3";
-import Footer3 from "@/components/home-3/Footer3";
 import HeroSection3 from "@/components/home-3/HeroSection-3";
 import Navbar3 from "@/components/home-3/Navbar3";
 import OurBlogSection3 from "@/components/home-3/OurBlogs-3";
@@ -60,9 +56,6 @@ export default function Home() {
       <ServicesSection3 />
       <TestimonialsSection3 />
       <OurBlogSection3 />
-      <EligibilitySection3 />
-      <FAQSection3 />
-      <Footer3 />
     </div>
   );
 }

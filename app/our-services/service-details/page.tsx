@@ -146,7 +146,7 @@ const ServiceDetailsPage: React.FC = () => {
               ].map((item, index) => (
                 <li
                   key={index}
-                  className={`px-3 py-2 text-sm font-medium cursor-pointer ${
+                  className={`px-3 py-3 text-sm font-medium cursor-pointer ${
                     item === "Assist Travel / Transport"
                       ? "bg-[#9C55A1] text-white"
                       : "hover:bg-[#E9D9EC] text-gray-700 bg-white"

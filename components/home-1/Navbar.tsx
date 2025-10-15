@@ -55,7 +55,7 @@ const Navbar: FC = () => {
             />
           </div>
 
-          <div className="hidden md:flex items-center space-x-6 text-[#9C55A1] font-medium">
+          <div className="hidden md:flex items-center space-x-6 text-black font-medium">
             <div
               className="relative"
               onMouseEnter={() => setIsHomeOpen(true)}

@@ -1,8 +1,30 @@
-import { CheckCircle, Youtube } from "lucide-react";
+import { Check, CheckCircle, Youtube } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
 const NdisPage: React.FC = () => {
+  const eligibilityCriteria = [
+    {
+      title: "Age Requirement",
+      description: "Must be under 65 years old when applying.",
+    },
+    {
+      title: "Residency Status",
+      description:
+        "Must be an Australian citizen, permanent resident, or hold a Protected Special Category Visa.",
+    },
+    {
+      title: "Disability Requirement",
+      description:
+        "Must have a permanent & significant disability that affects daily living and requires support.",
+    },
+    {
+      title: "Early Intervention",
+      description:
+        "People with disabilities or developmental delays may qualify for early intervention support.",
+    },
+  ];
+
   return (
     <div>
       {/* ===== TOP SECTION (Background Image) ===== */}
@@ -92,38 +114,18 @@ const NdisPage: React.FC = () => {
                 criteria:
               </p>
 
+              {/* Dynamic UL */}
               <ul className="space-y-4 text-gray-700">
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="text-[#4E944F] w-5 h-5 mt-1" />
-                  <p>
-                    <strong>Age Requirement:</strong> Must be under 65 years old
-                    when applying.
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="text-[#4E944F] w-6 h-6 mt-1" />
-                  <p>
-                    <strong>Residency Status:</strong> Must be an Australian
-                    citizen, permanent resident, or hold a Protected Special
-                    Category Visa.
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="text-[#4E944F] w-6 h-6 mt-1" />
-                  <p>
-                    <strong>Disability Requirement:</strong> Must have a
-                    permanent & significant disability that affects daily living
-                    and requires support.
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="text-[#4E944F] w-6 h-6 mt-1" />
-                  <p>
-                    <strong>Early Intervention:</strong> People with
-                    disabilities or developmental delays may qualify for early
-                    intervention support.
-                  </p>
-                </li>
+                {eligibilityCriteria.map((item, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <div className="w-5 h-5 flex-shrink-0 mt-0.5">
+                      <Check className="text-[#4E944F] w-5 h-5" />
+                    </div>
+                    <p className="mb-0">
+                      <strong>{item.title}:</strong> {item.description}
+                    </p>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

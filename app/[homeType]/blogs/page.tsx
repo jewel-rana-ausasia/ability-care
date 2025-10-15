@@ -1,40 +1,50 @@
+"use client";
 import { Plus } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import React from "react";
 
 const BlogsPage: React.FC = () => {
+  const { homeType } = useParams(); // get dynamic home type
   const blogs = [
     {
+      slug: "promote-independence",
       title: "How To Promote Independence In Disability?",
       date: "February 18, 2025",
       image: "/blog-image-1.jpg",
       buttonColor: "#6F3C72",
     },
     {
+      slug: "best-social-activities",
       title: "What Are The Best Social Activities For Disabled?",
       date: "February 8, 2025",
       image: "/blog-image-2.jpg",
       buttonColor: "#57A754",
     },
     {
+      slug: "occupational-therapy",
       title: "Occupational Therapy Recommended for Seniors?",
       date: "January 28, 2024",
       image: "/blog-image-3.jpg",
       buttonColor: "#6F3C72",
     },
     {
+      slug: "ndis-plan-tips",
       title: "Making the Most of Your NDIS Plan: Tips for Better Support",
       date: "January 15, 2025",
       image: "/blog-image4.png",
       buttonColor: "#6F3C72",
     },
     {
+      slug: "disability-services-independence",
       title: "How Disability Services Help You Live Independently",
       date: "January 2, 2025",
       image: "/blog-image5.png",
       buttonColor: "#57A754",
     },
     {
+      slug: "personal-care-support-impact",
       title: "Understanding the Impact of Personal Care Support",
       date: "December 25, 2024",
       image: "/blog-image6.png",
@@ -85,12 +95,13 @@ const BlogsPage: React.FC = () => {
                 {service.title}
               </h3>
 
-              <div
+              <Link
+                href={`/${homeType}/blogs/${service.slug}`}
                 className="flex justify-center items-center gap-1 font-medium mt-5 px-8 py-1 rounded-full mx-auto w-max text-white"
                 style={{ backgroundColor: service.buttonColor }}
               >
                 <span>Read More</span>
-              </div>
+              </Link>
             </div>
           </div>
         ))}

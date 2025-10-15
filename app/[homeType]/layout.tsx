@@ -1,15 +1,16 @@
 import React from "react";
 
-export default function HomeTypeLayout({
+export default async function HomeTypeLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { homeType: string };
+  params: Promise<{ homeType: string }>;
 }) {
+   const { homeType } = await params;
   let Navbar, Footer;
 
-  switch (params.homeType) {
+  switch (homeType) {
     case "home1":
       Navbar = require("@/components/home-1/Navbar").default;
       Footer = require("@/components/home-1/Footer").default;

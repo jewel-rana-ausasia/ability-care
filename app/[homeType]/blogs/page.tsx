@@ -51,7 +51,7 @@ const BlogsPage: React.FC = () => {
 
         {/* Text Content */}
         <div className="absolute top-30 left-[20%] text-left text-white z-10">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2">FAQ</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-2">BLOGS</h1>
           <p className="text-sm md:text-base flex justify-left items-center gap-2 mt-3">
             <span className="text-gray-200">HOME</span>
             <span className="text-white">›</span>

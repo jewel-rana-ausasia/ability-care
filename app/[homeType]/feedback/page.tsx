@@ -129,19 +129,19 @@ const FeedbackPage: React.FC = () => {
       </div>
       {/* Bottom Call-to-Action Section */}
       <div className="bg-[#F5EEF6] py-10 px-6 rounded-2xl text-center">
-        <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-4">
-          <span className="font-bold text-[#9C55A1]">Supporting People</span>{" "}
-          Living with Disability
+        <h3 className="text-lg md:text-3xl font-semibold text-gray-900 mb-4">
+          <span className="font-bold text-black">Supporting People</span> Living
+          with Disability
         </h3>
 
-        <div className="flex flex-col md:flex-row justify-center gap-4">
-          <button className="bg-[#4CAF50] text-white px-6 py-3 rounded-md font-medium hover:bg-[#3f9443] transition">
+        <div className="max-w-6xl mx-auto grid grid-cols-3 gap-8 py-5">
+          <button className="bg-[#57A754] text-white px-10 py-3 rounded-full font-medium hover:bg-[#3f9443] transition">
             New Participants
           </button>
-          <button className="bg-[#9C55A1] text-white px-6 py-3 rounded-md font-medium hover:bg-[#873f8f] transition">
+          <button className="bg-[#57A754] text-white px-10 py-3 rounded-full font-medium hover:bg-[#3f9443] transition">
             Contact Us
           </button>
-          <button className="bg-[#4CAF50] text-white px-6 py-3 rounded-md font-medium hover:bg-[#3f9443] transition">
+          <button className="bg-[#57A754] text-white px-10 py-3 rounded-full font-medium hover:bg-[#3f9443] transition">
             Referrals
           </button>
         </div>

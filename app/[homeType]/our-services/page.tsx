@@ -1,11 +1,17 @@
+// our-services/page.tsx
 "use client";
 import FAQSection2 from "@/components/home-2/FAQSection-2";
 import { Eye, Gem, Plus, Target } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 export default function OurServicesPage() {
+  const { homeType } = useParams(); // get dynamic home type
+
   const services = [
     {
+      slug: "group-centre-activities",
       title: "Group/Centre Activities",
       description:
         "Join our Group/Centre Activities for social connection, skill-building & fun in a supportive environment.",
@@ -14,6 +20,7 @@ export default function OurServicesPage() {
       color: "#9C55A1",
     },
     {
+      slug: "development-life-skills",
       title: "Development of Life Skills",
       description:
         "We support you in learning the skills you need to work well & become a productive community member.",
@@ -22,6 +29,7 @@ export default function OurServicesPage() {
       color: "#47A046",
     },
     {
+      slug: "assist-travel-transport",
       title: "Assist Travel / Transport",
       description:
         "Our Assist Travel & Transport service helps you travel safely & independently, whether for daily needs.",
@@ -30,6 +38,7 @@ export default function OurServicesPage() {
       color: "#9C55A1",
     },
     {
+      slug: "household-tasks",
       title: "Household Tasks",
       description:
         "We're here to help with everyday chores like cleaning, laundry & meal prep, making life easier and more comfortable for you..",
@@ -38,6 +47,7 @@ export default function OurServicesPage() {
       color: "#47A046",
     },
     {
+      slug: "therapeutic-support",
       title: "Therapeutic Support",
       description:
         "We provide professional therapeutic support to help improve your well-being,independence and quality of life...",
@@ -46,6 +56,7 @@ export default function OurServicesPage() {
       color: "#9C55A1",
     },
     {
+      slug: "assist-personal-activities",
       title: "Assist Personal Activities",
       description:
         "We help with daily personal tasks like dressing, grooming & mobility, ensuring you feel supported & independent in your daily life..",
@@ -99,13 +110,14 @@ export default function OurServicesPage() {
               <p className="text-gray-600 text-sm mt-3 leading-relaxed">
                 {service.description}
               </p>
-              <div
+              <Link
+                href={`/${homeType}/our-services/${service.slug}`}
                 className="flex justify-center items-center gap-1 font-medium mt-5"
                 style={{ color: service.color }}
               >
                 <span>Read More</span>
                 <Plus size={16} strokeWidth={2} />
-              </div>
+              </Link>
             </div>
 
             {/* Bottom Border */}

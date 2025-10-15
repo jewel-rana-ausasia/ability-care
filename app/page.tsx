@@ -1,11 +1,5 @@
-import Navbar from "@/components/Navbar";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <div className="w-full h-full">
-      <h1 className="flex justify-center items-center">
-        Welcome to Our Website
-      </h1>
-    </div>
-  );
+  redirect("/home1");
 }

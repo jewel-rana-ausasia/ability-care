@@ -35,8 +35,8 @@ const ServicesSection: FC = () => {
               <Image
                 src="/service1-icon.png"
                 alt="Group Icon"
-                width={50}
-                height={50}
+                width={55}
+                height={55}
               />
             </div>
           </div>
@@ -46,7 +46,7 @@ const ServicesSection: FC = () => {
             <h3 className="font-bold text-lg text-gray-900">
               Group/Centre Activities
             </h3>
-            <p className="text-gray-600 text-sm mt-3 leading-relaxed">
+            <p className="text-gray-600 text-sm mt-3 leading-relaxed line-clamp-2">
               Join our Group/Centre Activities for social connection,
               skill-building & fun in a supportive environment.
             </p>
@@ -74,8 +74,8 @@ const ServicesSection: FC = () => {
               <Image
                 src="/service2-icon.png"
                 alt="Life Skills Icon"
-                width={50}
-                height={50}
+                width={55}
+                height={55}
               />
             </div>
           </div>
@@ -84,7 +84,7 @@ const ServicesSection: FC = () => {
             <h3 className="font-bold text-lg text-gray-900">
               Development of Life Skills
             </h3>
-            <p className="text-gray-600 text-sm mt-3 leading-relaxed">
+            <p className="text-gray-600 text-sm mt-3 leading-relaxed line-clamp-2">
               We will support you and help you learn the skills you need to work
               well & become a productive community member.
             </p>
@@ -111,8 +111,8 @@ const ServicesSection: FC = () => {
               <Image
                 src="/assist-travel-or-transport-icon.png"
                 alt="Travel Icon"
-                width={50}
-                height={50}
+                width={55}
+                height={55}
               />
             </div>
           </div>
@@ -121,7 +121,7 @@ const ServicesSection: FC = () => {
             <h3 className="font-bold text-lg text-gray-900">
               Assist Travel / <span className="text-[#9C55A1]">Transport</span>
             </h3>
-            <p className="text-gray-600 text-sm mt-3 leading-relaxed">
+            <p className="text-gray-600 text-sm mt-3 leading-relaxed line-clamp-2">
               Our Assist Travel & Transport service helps you travel safely &
               independently, whether for daily needs.
             </p>

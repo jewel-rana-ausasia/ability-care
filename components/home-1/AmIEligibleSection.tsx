@@ -49,7 +49,7 @@ export default function AmIEligibleSection() {
           </p>
           <Button
             variant="secondary"
-            className="bg-white text-[#8c3cc7] font-medium hover:bg-white/90 transition rounded-full px-6 py-2"
+            className="bg-white text-[#6D246E]/60 font-medium hover:bg-white/90 transition rounded-full px-6 py-2"
           >
             Meet The Team <span className="ml-2 text-xl">››</span>
           </Button>

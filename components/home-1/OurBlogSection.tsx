@@ -60,7 +60,7 @@ export default function OurBlogSection() {
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">
                   {post.title}
                 </h3>
-                <p className="text-gray-600 text-sm mb-5">{post.desc}</p>
+                <p className="text-gray-600 text-sm mb-5 line-clamp-2">{post.desc}</p>
                 <Button
                   variant="link"
                   className="text-[#8c3cc7] p-0 hover:underline"

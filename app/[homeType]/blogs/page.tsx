@@ -64,7 +64,7 @@ const BlogsPage: React.FC = () => {
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2, duration: 0.3, ease: ["easeOut"] },
+      transition: { delay: i * 0.2, duration: 0.3, ease: "easeOut" as const},
     }),
   };
 

@@ -79,7 +79,7 @@ export default function OurBlogSection2() {
           <div
             key={dot}
             className={`w-3 h-3 rounded-full ${
-              dot === 1 ? "bg-[#8c3cc7]" : "bg-gray-300"
+              dot === 1 ? "bg-[#9A549F]" : "bg-gray-300"
             }`}
           ></div>
         ))}

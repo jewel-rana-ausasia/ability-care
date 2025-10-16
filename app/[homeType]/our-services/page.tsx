@@ -1,10 +1,10 @@
-// our-services/page.tsx
 "use client";
 import FAQSection2 from "@/components/home-2/FAQSection-2";
 import { Eye, Gem, Plus, Target } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function OurServicesPage() {
   const { homeType } = useParams(); // get dynamic home type
@@ -65,31 +65,53 @@ export default function OurServicesPage() {
       color: "#47A046",
     },
   ];
+
+  // Animation variants
+  const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const cardVariant = {
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    visible: { opacity: 1, y: 0, scale: 1 },
+  };
+
   return (
     <div className="w-full mb-20">
       {/* ===== TOP SECTION (Background Image) ===== */}
       <div className="relative h-[250px] md:h-[300px] bg-[url('/image/about-us/about-us.jpg')] bg-cover bg-center flex items-center justify-center">
-        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#356634] to-[#356634]/0"></div>
 
-        {/* Text Content */}
-        <div className="absolute top-30 left-[20%] text-center text-white z-10">
+        {/* Text Content with animation */}
+        <motion.div
+          className="absolute top-30 left-[20%] text-center text-white z-10"
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 1 }}
+          variants={fadeUp}
+        >
           <h1 className="text-3xl md:text-4xl font-bold mb-2">Our Services</h1>
           <p className="text-sm md:text-base flex justify-left items-center gap-2 mt-3">
             <span className="text-gray-200">Home</span>
             <span className="text-white">›</span>
             <span className="text-white font-medium">Our Services</span>
           </p>
-        </div>
+        </motion.div>
       </div>
 
       {/* ===== CONTENT SECTION ===== */}
       {/* Cards */}
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 mt-32">
         {services.map((service, index) => (
-          <div
+          <motion.div
             key={index}
             className="relative bg-white rounded-2xl shadow-md overflow-hidden group hover:-translate-y-1 transition-transform duration-300"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            variants={cardVariant}
           >
             {/* Image */}
             <div className="relative">
@@ -125,7 +147,7 @@ export default function OurServicesPage() {
               className="absolute bottom-0 left-0 w-full h-[10px] rounded-b-2xl"
               style={{ backgroundColor: service.color }}
             ></div>
-          </div>
+          </motion.div>
         ))}
       </div>
 

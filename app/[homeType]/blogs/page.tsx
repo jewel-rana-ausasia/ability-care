@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import React from "react";
+import { motion } from "framer-motion";
 
 const BlogsPage: React.FC = () => {
   const { homeType } = useParams(); // get dynamic home type
@@ -52,30 +53,53 @@ const BlogsPage: React.FC = () => {
     },
   ];
 
+  // Framer Motion variants for animation
+  const textVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const cardVariant = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2, duration: 0.3, ease: ["easeOut"] },
+    }),
+  };
+
   return (
     <div>
       {/* ===== TOP SECTION (Background Image) ===== */}
       <div className="relative h-[250px] md:h-[300px] bg-[url('/image/about-us/about-us.jpg')] bg-cover bg-center flex items-center justify-center">
-        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#356634] to-[#356634]/0"></div>
 
-        {/* Text Content */}
-        <div className="absolute top-30 left-[20%] text-left text-white z-10">
+        {/* Text Content with animation */}
+        <motion.div
+          className="absolute top-30 left-[20%] text-left text-white z-10"
+          initial="hidden"
+          animate="visible"
+          variants={textVariant}
+        >
           <h1 className="text-3xl md:text-4xl font-bold mb-2">BLOGS</h1>
           <p className="text-sm md:text-base flex justify-left items-center gap-2 mt-3">
             <span className="text-gray-200">HOME</span>
             <span className="text-white">›</span>
             <span className="text-white font-medium">BLOGS</span>
           </p>
-        </div>
+        </motion.div>
       </div>
 
-      {/* ===== CONTENT SECTION ===== */}
-      {/* Cards */}
+      {/* ===== CONTENT SECTION (Blog Cards) ===== */}
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 mt-20">
         {blogs.map((service, index) => (
-          <div
+          <motion.div
             key={index}
+            custom={index}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={cardVariant}
             className="relative bg-white rounded-2xl shadow-md overflow-hidden group hover:-translate-y-1 transition-transform duration-300"
           >
             {/* Image */}
@@ -91,9 +115,7 @@ const BlogsPage: React.FC = () => {
             {/* Text */}
             <div className="px-6 pt-8 pb-8 text-center">
               <h4 className="font-bold text-[#6F3C72] mb-2">{service.date}</h4>
-              <h3 className="font-bold text-lg text-gray-900">
-                {service.title}
-              </h3>
+              <h3 className="font-bold text-lg text-gray-900">{service.title}</h3>
 
               <Link
                 href={`/${homeType}/blogs/${service.slug}`}
@@ -103,7 +125,7 @@ const BlogsPage: React.FC = () => {
                 <span>Read More</span>
               </Link>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 

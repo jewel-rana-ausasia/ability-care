@@ -38,19 +38,15 @@ export default function HeroSection() {
                   />
                 </div>
 
-                <div className="absolute bottom-2 -left-2 lg:bottom-6 lg:-left-1 xl:bottom-8 xl:left-0 rounded-full shadow-2xl">
-                  <div className="relative w-24 h-24 sm:w-32 sm:h-32 lg:w-36 lg:h-36 xl:w-44 xl:h-44 bg-[#7b3d96] rounded-full lg:border-[4px] xl:border-[6px] border-white flex flex-col items-center justify-center text-white shadow-lg">
-                    <div className="flex items-end justify-center mb-1">
-                      <span className="text-base sm:text-lg lg:text-3xl font-bold leading-none">
-                        We
-                      </span>
-                      <Heart className="w-4 h-4 sm:w-6 sm:h-6 lg:w-10 lg:h-10 text-[#88c843] fill-[#88c843] ml-1 relative top-[1px]" />
-                    </div>
-
-                    {/* "ndis" text */}
-                    <span className="text-2xl sm:text-2xl lg:text-5xl font-extrabold tracking-tight">
-                      ndis
-                    </span>
+                <div className="absolute bottom-2 -left-2 lg:bottom-6 lg:-left-1 xl:bottom-4 xl:-left-4 rounded-full shadow-2xl">
+                  <div className="relative w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48 rounded-full flex flex-col items-center justify-center">
+                    <Image
+                      src="/we-love-ndis-logo.png" // 👈 your new image path
+                      alt="NDIS Circle Badge"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
                   </div>
                 </div>
               </div>

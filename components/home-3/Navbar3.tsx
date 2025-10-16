@@ -24,7 +24,7 @@ const Navbar3: FC = () => {
 
   // Function to get link classes based on active state
   const getLinkClasses = (href: string) => {
-    const baseClasses = "hover:text-purple-600 transition-colors duration-200";
+    const baseClasses = "hover:text-[#A55FA4] transition-colors duration-200";
     const activeClasses = "text-[#A55FA4] font-semibold";
     const inactiveClasses = "text-gray-900";
 
@@ -76,7 +76,7 @@ const Navbar3: FC = () => {
               onMouseLeave={() => setIsHomeOpen(false)}
             >
               <button
-                className={`flex items-center gap-1 font-semibold hover:text-purple-600 transition ${
+                className={`flex items-center gap-1 font-semibold hover:text-[#A55FA4] transition ${
                   isActiveLink(`/${homeType}`)
                     ? "text-[#9C55A1]"
                     : "text-gray-900"

@@ -63,7 +63,7 @@ export default function OurBlogSection() {
                 <p className="text-gray-600 text-sm mb-5 line-clamp-2">{post.desc}</p>
                 <Button
                   variant="link"
-                  className="text-[#8c3cc7] p-0 hover:underline"
+                  className="text-[#6F3C72] text-base font-medium p-0 hover:underline"
                 >
                   Read More <span className="ml-1 text-lg">+</span>
                 </Button>

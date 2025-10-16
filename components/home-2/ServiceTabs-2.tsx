@@ -22,8 +22,8 @@ export default function ServiceTabs2() {
   ];
 
   return (
-    <div className="relative -mt-10 lg:-mt-20 z-20 flex justify-center px-1 sm:px-4">
-      <div className="bg-[#F4FBEE] rounded-full border-[4px] sm:border-[7px] border-[#4E944A] flex flex-wrap justify-center sm:justify-between items-center gap-1.5 sm:gap-0 px-1.5 sm:px-8 py-1.5 sm:py-5 w-full max-w-4xl shadow-md overflow-hidden">
+    <div className="relative -mt-10 lg:-mt-14 2xl:-mt-20 z-20 flex justify-center px-1 sm:px-4">
+      <div className="bg-[#F4FBEE] rounded-full border-[3px] lg:border-[6px] 2xl:border-[7px] border-[#4E944A] flex flex-wrap justify-center sm:justify-between items-center gap-1.5 sm:gap-0 px-1.5 sm:px-8 py-1.5 sm:py-5 w-full max-w-xl lg:max-w-3xl 2xl:max-w-4xl shadow-md overflow-hidden">
         {tabs.map((tab, index) => (
           <motion.div
             key={index}
@@ -33,7 +33,7 @@ export default function ServiceTabs2() {
             animate="visible"
             variants={tabVariants}
           >
-            <div className="w-8 h-7 sm:w-20 sm:h-14 flex items-center justify-center">
+            <div className="w-8 h-7 lg:w-16 lg:h-10 2xl:w-20 2xl:h-14 flex items-center justify-center">
               <Image
                 src={tab.src}
                 alt={tab.alt}

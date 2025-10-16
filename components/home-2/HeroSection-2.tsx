@@ -84,7 +84,7 @@ export default function HeroSection2() {
                   key={index} // ensure motion resets per slide
                 >
                   <motion.h1
-                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
+                    className="text-2xl sm:text-xl md:text-2xl lg:text-3xl 2xl:text-5xl font-bold leading-tight"
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.2 } }}
                   >
@@ -92,7 +92,7 @@ export default function HeroSection2() {
                   </motion.h1>
 
                   <motion.p
-                    className="text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed opacity-90 max-w-xl mx-auto lg:mx-0"
+                    className="text-xs sm:text-sm md:text-base 2xl:text-lg leading-relaxed opacity-90 max-w-xl mx-auto lg:mx-0"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.4 } }}
                   >
@@ -103,7 +103,7 @@ export default function HeroSection2() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.6 } }}
                   >
-                    <Button className="mt-2 sm:mt-4 bg-gradient-to-tr from-[#a863ad] to-[#6F3C72] hover:from-[#7B3D96] hover:to-[#9C55A1] text-white text-sm sm:text-base md:text-lg px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-6 rounded-md font-semibold transition-all">
+                    <Button className="mt-2 sm:mt-4 bg-gradient-to-tr from-[#a863ad] to-[#6F3C72] hover:from-[#7B3D96] hover:to-[#9C55A1] text-white text-sm sm:text-sm md:text-base 2xl:text-lg px-6 lg:px-8 2xl:px-10 py-2 lg:py-4 2xl:py-6 rounded-md font-semibold transition-all">
                       Read More
                     </Button>
                   </motion.div>

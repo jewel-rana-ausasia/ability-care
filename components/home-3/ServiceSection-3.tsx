@@ -20,25 +20,25 @@ const ServicesSection3: FC = () => {
   // Individual card fade-up
   const cardVariants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeInOut" } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeInOut" as const } },
   };
 
   // Icon animation
   const iconVariants = {
     hidden: { scale: 0, opacity: 0 },
-    visible: { scale: 1, opacity: 1, transition: { duration: 0.6, ease: [0.42, 0, 0.58, 1] } },
+    visible: { scale: 1, opacity: 1, transition: { duration: 0.6, ease: "easeInOut" as const } },
   };
 
   // Text animation
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.42, 0, 0.58, 1] } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" as const } },
   };
 
   // Button animation
   const buttonVariants = {
     hidden: { scale: 0.9, opacity: 0 },
-    visible: { scale: 1, opacity: 1, transition: { duration: 0.5, ease: [0.42, 0, 0.58, 1] } },
+    visible: { scale: 1, opacity: 1, transition: { duration: 0.5, ease: "easeInOut" as const } },
   };
 
   const services = [

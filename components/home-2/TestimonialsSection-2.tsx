@@ -45,7 +45,7 @@ const TestimonialsSection2: FC = () => {
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" as const}}
           viewport={{ once: true }}
           className="bg-[#F4E6F5] p-10 flex flex-col justify-center relative"
         >
@@ -63,7 +63,7 @@ const TestimonialsSection2: FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" as const }}
             viewport={{ once: true }}
             className="rounded-md overflow-hidden text-white relative max-w-[440px]"
           >
@@ -81,7 +81,7 @@ const TestimonialsSection2: FC = () => {
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" as const }}
           viewport={{ once: true }}
           className="bg-[#57A754] text-white flex flex-col justify-center p-10 relative"
         >

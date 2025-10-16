@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, Transition } from "framer-motion";
 
 // Define the transition properly
-const transition: Transition = { duration: 0.6, ease: "easeOut" as any }; // type-cast works here
+const transition: Transition = { duration: 0.6, ease: "easeOut" as const }; // type-cast works here
 
 export default function ServiceTab3() {
   const cardVariants = {

@@ -10,7 +10,7 @@ export default function ServiceTabs2() {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { delay: i * 0.15, duration: 0.6, ease: "easeInOut" },
+      transition: { delay: i * 0.15, duration: 0.6, ease: "easeInOut" as const},
     }),
   };
 

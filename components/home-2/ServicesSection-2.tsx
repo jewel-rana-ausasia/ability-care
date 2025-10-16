@@ -50,7 +50,7 @@ const ServicesSection2: FC = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: i * 0.2, ease: "easeInOut" }} // <-- smoother transition
+            transition={{ duration: 0.8, delay: i * 0.2, ease: "easeInOut" as const }} // <-- smoother transition
             className="relative bg-white rounded-2xl shadow-md overflow-hidden group hover:-translate-y-1 transition-transform duration-300"
           >
             {/* Image */}

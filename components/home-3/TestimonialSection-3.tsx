@@ -36,14 +36,14 @@ const TestimonialsSection3: FC = () => {
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2, duration: 0.8, ease: [0.42, 0, 0.58, 1] },
+      transition: { delay: i * 0.2, duration: 0.8, ease: "easeOut" as const },
     }),
   };
 
   // Motion variant for the quote icon
   const iconVariants = {
     hidden: { scale: 0, opacity: 0 },
-    visible: { scale: 1, opacity: 1, transition: { duration: 0.5, ease: [0.42, 0, 0.58, 1] } },
+    visible: { scale: 1, opacity: 1, transition: { duration: 0.5, ease: "easeOut" as const } },
   };
 
   return (

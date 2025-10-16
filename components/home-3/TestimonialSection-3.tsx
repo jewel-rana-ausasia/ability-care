@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { FC } from "react";
 import { Quote } from "lucide-react";
+import { motion } from "framer-motion";
 
 const TestimonialsSection3: FC = () => {
   const testimonials = [
@@ -28,6 +29,22 @@ const TestimonialsSection3: FC = () => {
       color: "#9C55A1",
     },
   ];
+
+  // Motion variants for cards
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2, duration: 0.8, ease: [0.42, 0, 0.58, 1] },
+    }),
+  };
+
+  // Motion variant for the quote icon
+  const iconVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: { scale: 1, opacity: 1, transition: { duration: 0.5, ease: [0.42, 0, 0.58, 1] } },
+  };
 
   return (
     <>
@@ -70,17 +87,23 @@ const TestimonialsSection3: FC = () => {
           {/* Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="relative bg-white shadow-[0_-8px_20px_rgba(0,0,0,0.05),0_10px_20px_rgba(0,0,0,0.15)] px-6 py-10 flex flex-col items-center justify-between transition-transform duration-300 hover:-translate-y-1"
+                custom={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={cardVariants}
               >
                 {/* Quote icon */}
-                <div
+                <motion.div
                   className="absolute -top-6 w-12 h-12 rounded-full flex items-center justify-center shadow-md"
                   style={{ backgroundColor: item.color }}
+                  variants={iconVariants}
                 >
                   <Quote className="text-white w-6 h-6" />
-                </div>
+                </motion.div>
 
                 {/* Content */}
                 <p className="text-gray-800 text-sm mt-4 leading-relaxed">
@@ -88,7 +111,7 @@ const TestimonialsSection3: FC = () => {
                 </p>
                 <h3 className="font-bold text-gray-900 mt-6">{item.name}</h3>
                 <p className="text-gray-700 font-semibold text-sm">{item.location}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
 

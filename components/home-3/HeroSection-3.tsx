@@ -6,7 +6,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft , ArrowRight  } from "lucide-react"; // 👈 custom icons
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { motion, Easing } from "framer-motion";
+
+// Define a cubic-bezier easing (easeOut)
+const easeOut: Easing = [0.42, 0, 0.58, 1];
 
 export default function HeroSection() {
   const slides = [
@@ -42,6 +46,21 @@ export default function HeroSection() {
     },
   ];
 
+  // Motion variants
+  const contentVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.3, duration: 1, ease: easeOut },
+    }),
+  };
+
+  const bgVariants = {
+    hidden: { scale: 1.1, opacity: 0 },
+    visible: { scale: 1, opacity: 1, transition: { duration: 1.5, ease: easeOut } },
+  };
+
   return (
     <section className="relative w-full overflow-hidden">
       <Swiper
@@ -57,11 +76,12 @@ export default function HeroSection() {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div
+            <motion.div
               className="relative w-full h-[80vh] flex items-center bg-center bg-no-repeat bg-cover md:bg-cover"
-              style={{
-                backgroundImage: `url(${slide.image})`,
-              }}
+              initial="hidden"
+              animate="visible"
+              variants={bgVariants}
+              style={{ backgroundImage: `url(${slide.image})` }}
             >
               {/* Mobile background color */}
               <div className="absolute inset-0 md:hidden bg-gradient-to-br from-[#F4FBEE] to-[#E8E2F0]" />
@@ -71,28 +91,42 @@ export default function HeroSection() {
 
               {/* Content */}
               <div className="relative z-10 w-full max-w-7xl mx-auto py-12 flex flex-col justify-center h-full">
-                <div className="max-w-2xl text-left space-y-5 sm:space-y-6">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-white">
+                <motion.div
+                  className="max-w-2xl text-left space-y-5 sm:space-y-6"
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <motion.h1
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-white"
+                    custom={0}
+                    variants={contentVariants}
+                  >
                     {slide.title}
-                  </h1>
+                  </motion.h1>
 
-                  <p className="text-sm sm:text-base md:text-lg text-white/90 max-w-xl">
+                  <motion.p
+                    className="text-sm sm:text-base md:text-lg text-white/90 max-w-xl"
+                    custom={0.3}
+                    variants={contentVariants}
+                  >
                     {slide.description}
-                  </p>
+                  </motion.p>
 
-                  <Button className="bg-[#498B46] hover:bg-[#3d7a3b] text-white text-sm sm:text-base md:text-lg px-5 sm:px-8 py-3 sm:py-4 rounded-md font-semibold shadow-md transition-all">
-                    Read More
-                  </Button>
-                </div>
+                  <motion.div custom={0.6} variants={contentVariants} whileHover={{ scale: 1.01 }}>
+                    <Button className="bg-[#498B46] hover:bg-[#3d7a3b] text-white text-sm sm:text-base md:text-lg px-5 sm:px-8 py-3 sm:py-4 rounded-md font-semibold shadow-md transition-all">
+                      Read More
+                    </Button>
+                  </motion.div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </SwiperSlide>
         ))}
       </Swiper>
 
-      {/* ✅ Custom Navigation Buttons */}
+      {/* Custom Navigation Buttons */}
       <div className="swiper-button-prev-custom absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-[#498B46] text-[#498B46] hover:text-white rounded-full p-2 sm:p-3 shadow-md transition-all cursor-pointer">
-        <ArrowLeft  size={22} />
+        <ArrowLeft size={22} />
       </div>
       <div className="swiper-button-next-custom absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-[#498B46] text-[#498B46] hover:text-white rounded-full p-2 sm:p-3 shadow-md transition-all cursor-pointer">
         <ArrowRight size={22} />
@@ -116,7 +150,7 @@ export default function HeroSection() {
           }
           .swiper-button-prev-custom,
           .swiper-button-next-custom {
-            display: none !important; /* hide on mobile */
+            display: none !important;
           }
         }
       `}</style>

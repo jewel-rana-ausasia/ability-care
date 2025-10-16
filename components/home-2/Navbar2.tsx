@@ -14,6 +14,24 @@ const Navbar2: FC = () => {
     ? currentSection
     : "home2";
 
+  
+  // Function to check if a link is active
+  const isActiveLink = (href: string) => {
+    if (href === `/${homeType}` || href === "/") {
+      return pathname === `/${homeType}` || pathname === "/";
+    }
+    return pathname?.startsWith(href);
+  };
+
+  // Function to get link classes based on active state
+  const getLinkClasses = (href: string) => {
+    const baseClasses = "hover:text-green-600 transition-colors duration-200";
+    const activeClasses = "text-green-600 font-semibold";
+    const inactiveClasses = "text-gray-900";
+    
+    return `${baseClasses} ${isActiveLink(href) ? activeClasses : inactiveClasses}`;
+  };
+
   return (
     <header className="w-full mx-auto">
       <div className="bg-[#498B46]">
@@ -58,7 +76,9 @@ const Navbar2: FC = () => {
               onMouseEnter={() => setIsHomeOpen(true)}
               onMouseLeave={() => setIsHomeOpen(false)}
             >
-              <button className="flex items-center gap-1 text-[#6F3C72] font-semibold hover:text-purple-600 transition">
+              <button className=  {`flex items-center gap-1 font-semibold hover:text-green-600 transition ${
+                isActiveLink(`/${homeType}`) ? "text-[#498B46]" : "text-black"
+              }`}>
                 Home
                 <ChevronDown
                   size={16}
@@ -72,19 +92,19 @@ const Navbar2: FC = () => {
               >
                 <Link
                   href="/home1"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-[#9C55A1] transition-colors duration-200"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-[#498B46] transition-colors duration-200"
                 >
                   Home-1
                 </Link>
                 <Link
                   href="/home2"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-[#9C55A1] transition-colors duration-200"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-[#498B46] transition-colors duration-200"
                 >
                   Home-2
                 </Link>
                 <Link
                   href="/home3"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-[#9C55A1] transition-colors duration-200"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-[#498B46] transition-colors duration-200"
                 >
                   Home-3
                 </Link>
@@ -92,37 +112,38 @@ const Navbar2: FC = () => {
             </div>
             <Link
               href={`/${homeType}/about-us`}
-              className="hover:text-purple-600"
+              className={getLinkClasses(`/${homeType}/about-us`)}
             >
               About Us
             </Link>
-            <Link href={`/${homeType}/ndis`} className="hover:text-purple-600">
+            <Link href={`/${homeType}/ndis`}
+              className={getLinkClasses(`/${homeType}/ndis`)}>
               NDIS
             </Link>
             <Link
               href={`/${homeType}/our-services`}
-              className="hover:text-purple-600"
+              className={getLinkClasses(`/${homeType}/our-services`)}
             >
               Services
             </Link>
             <Link
               href={`/${homeType}/new-participants`}
-              className="hover:text-purple-600"
+              className={getLinkClasses(`/${homeType}/new-participants`)}
             >
               New Participants
             </Link>
-            <Link href={`/${homeType}/blogs`} className="hover:text-purple-600">
+            <Link href={`/${homeType}/blogs`} className={getLinkClasses(`/${homeType}/blogs`)}>
               Blog
             </Link>
             <Link
               href={`/${homeType}/feedback`}
-              className="hover:text-purple-600"
+              className={getLinkClasses(`/${homeType}/feedback`)}
             >
               Feedback
             </Link>
             <Link
               href={`/${homeType}/contact-us`}
-              className="hover:text-purple-600"
+              className={getLinkClasses(`/${homeType}/contact-us`)}
             >
               Contact Us
             </Link>

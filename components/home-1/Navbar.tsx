@@ -15,6 +15,23 @@ const Navbar: FC = () => {
     ? currentSection
     : "home1";
 
+  // Function to check if a link is active
+  const isActiveLink = (href: string) => {
+    if (href === `/${homeType}` || href === "/") {
+      return pathname === `/${homeType}` || pathname === "/";
+    }
+    return pathname?.startsWith(href);
+  };
+
+  // Function to get link classes based on active state
+  const getLinkClasses = (href: string) => {
+    const baseClasses = "hover:text-purple-600 transition-colors duration-200";
+    const activeClasses = "text-purple-500 font-semibold";
+    const inactiveClasses = "text-gray-900";
+    
+    return `${baseClasses} ${isActiveLink(href) ? activeClasses : inactiveClasses}`;
+  };
+
   return (
     <header className="w-full mx-auto">
       {/* ==== TOP INFO BAR ==== */}
@@ -61,7 +78,9 @@ const Navbar: FC = () => {
               onMouseEnter={() => setIsHomeOpen(true)}
               onMouseLeave={() => setIsHomeOpen(false)}
             >
-              <button className="flex items-center gap-1 text-[#6F3C72] font-semibold hover:text-purple-600 transition">
+              <button className= {`flex items-center gap-1 font-semibold hover:text-purple-600 transition ${
+                isActiveLink(`/${homeType}`) ? "text-[#9C55A1]" : "text-black"
+              }`}>
                 Home
                 <ChevronDown
                   size={16}
@@ -75,19 +94,31 @@ const Navbar: FC = () => {
               >
                 <Link
                   href="/home1"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-[#9C55A1] transition-colors duration-200"
+                  className={`block px-4 py-2 text-sm transition-colors duration-200 ${
+                    pathname === "/home1" 
+                      ? "bg-purple-50 text-[#9C55A1] font-medium" 
+                      : "text-gray-700 hover:bg-purple-50 hover:text-[#9C55A1]"
+                  }`}
                 >
                   Home-1
                 </Link>
                 <Link
                   href="/home2"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-[#9C55A1] transition-colors duration-200"
+                  className={`block px-4 py-2 text-sm transition-colors duration-200 ${
+                    pathname === "/home2" 
+                      ? "bg-purple-50 text-[#9C55A1] font-medium" 
+                      : "text-gray-700 hover:bg-purple-50 hover:text-[#9C55A1]"
+                  }`}
                 >
                   Home-2
                 </Link>
                 <Link
                   href="/home3"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-[#9C55A1] transition-colors duration-200"
+                  className={`block px-4 py-2 text-sm transition-colors duration-200 ${
+                    pathname === "/home3" 
+                      ? "bg-purple-50 text-[#9C55A1] font-medium" 
+                      : "text-gray-700 hover:bg-purple-50 hover:text-[#9C55A1]"
+                  }`}
                 >
                   Home-3
                 </Link>
@@ -96,37 +127,43 @@ const Navbar: FC = () => {
 
             <Link
               href={`/${homeType}/about-us`}
-              className="hover:text-purple-600"
+              className={getLinkClasses(`/${homeType}/about-us`)}
             >
               About Us
             </Link>
-            <Link href={`/${homeType}/ndis`} className="hover:text-purple-600">
+            <Link 
+              href={`/${homeType}/ndis`} 
+              className={getLinkClasses(`/${homeType}/ndis`)}
+            >
               NDIS
             </Link>
             <Link
               href={`/${homeType}/our-services`}
-              className="hover:text-purple-600"
+              className={getLinkClasses(`/${homeType}/our-services`)}
             >
               Services
             </Link>
             <Link
               href={`/${homeType}/new-participants`}
-              className="hover:text-purple-600"
+              className={getLinkClasses(`/${homeType}/new-participants`)}
             >
               New Participants
             </Link>
-            <Link href={`/${homeType}/blogs`} className="hover:text-purple-600">
+            <Link 
+              href={`/${homeType}/blogs`} 
+              className={getLinkClasses(`/${homeType}/blogs`)}
+            >
               Blog
             </Link>
             <Link
               href={`/${homeType}/feedback`}
-              className="hover:text-purple-600"
+              className={getLinkClasses(`/${homeType}/feedback`)}
             >
               Feedback
             </Link>
             <Link
               href={`/${homeType}/contact-us`}
-              className="hover:text-purple-600"
+              className={getLinkClasses(`/${homeType}/contact-us`)}
             >
               Contact Us
             </Link>
@@ -134,7 +171,11 @@ const Navbar: FC = () => {
 
           <Link
             href={`/${homeType}/referrals`}
-            className="bg-[#9C55A1] text-white px-6 py-2 rounded-full hover:bg-[#732d91] transition"
+            className={`px-6 py-2 rounded-full transition ${
+              isActiveLink(`/${homeType}/referrals`)
+                ? "bg-[#732d91] text-white"
+                : "bg-[#9C55A1] text-white hover:bg-[#732d91]"
+            }`}
           >
             Referrals
           </Link>

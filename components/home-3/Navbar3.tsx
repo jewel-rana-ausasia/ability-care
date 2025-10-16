@@ -14,6 +14,23 @@ const Navbar3: FC = () => {
     ? currentSection
     : "home3";
 
+  // Function to check if a link is active
+  const isActiveLink = (href: string) => {
+    if (href === `/${homeType}` || href === "/") {
+      return pathname === `/${homeType}` || pathname === "/";
+    }
+    return pathname?.startsWith(href);
+  };
+
+  // Function to get link classes based on active state
+  const getLinkClasses = (href: string) => {
+    const baseClasses = "hover:text-purple-600 transition-colors duration-200";
+    const activeClasses = "text-[#A55FA4] font-semibold";
+    const inactiveClasses = "text-gray-900";
+
+    return `${baseClasses} ${isActiveLink(href) ? activeClasses : inactiveClasses}`;
+  };
+
   return (
     <header className="w-full mx-auto">
       <div className="bg-[#A55FA4]">
@@ -58,7 +75,13 @@ const Navbar3: FC = () => {
               onMouseEnter={() => setIsHomeOpen(true)}
               onMouseLeave={() => setIsHomeOpen(false)}
             >
-              <button className="flex items-center gap-1 text-[#6F3C72] font-semibold hover:text-purple-600 transition">
+              <button
+                className={`flex items-center gap-1 font-semibold hover:text-purple-600 transition ${
+                  isActiveLink(`/${homeType}`)
+                    ? "text-[#9C55A1]"
+                    : "text-gray-900"
+                }`}
+              >
                 Home
                 <ChevronDown
                   size={16}
@@ -92,37 +115,36 @@ const Navbar3: FC = () => {
             </div>
             <Link
               href={`/${homeType}/about-us`}
-              className="hover:text-purple-600"
+              className={getLinkClasses(`/${homeType}/about-us`)}
             >
               About Us
             </Link>
-            <Link href={`/${homeType}/ndis`} className="hover:text-purple-600">
+            <Link href={`/${homeType}/ndis`} className={getLinkClasses(`/${homeType}/ndis`)}>
               NDIS
             </Link>
             <Link
               href={`/${homeType}/our-services`}
-              className="hover:text-purple-600"
+              className={getLinkClasses(`/${homeType}/our-services`)}
             >
               Services
             </Link>
             <Link
               href={`/${homeType}/new-participants`}
-              className="hover:text-purple-600"
-            >
+              className={getLinkClasses(`/${homeType}/new-participants`)}>
               New Participants
             </Link>
-            <Link href={`/${homeType}/blogs`} className="hover:text-purple-600">
+            <Link href={`/${homeType}/blogs`} className={getLinkClasses(`/${homeType}/blogs`)}>
               Blog
             </Link>
             <Link
               href={`/${homeType}/feedback`}
-              className="hover:text-purple-600"
+              className={getLinkClasses(`/${homeType}/feedback`)}
             >
               Feedback
             </Link>
             <Link
               href={`/${homeType}/contact-us`}
-              className="hover:text-purple-600"
+              className={getLinkClasses(`/${homeType}/contact-us`)}
             >
               Contact Us
             </Link>

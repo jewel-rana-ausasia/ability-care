@@ -67,7 +67,14 @@ export default function AboutUsPage() {
         <div className="relative -mt-48 z-20 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3">
           {/* Mission */}
           <div className="bg-[#5CA15B] text-white flex flex-col items-center justify-center p-10 text-center">
-            <Target className="w-14 h-14 mb-4" strokeWidth={1.5} />
+            {/* <Target className="w-14 h-14 mb-4" strokeWidth={1.5} /> */}
+            <Image
+              src="/mission.png" // 👈 your image path here
+              alt="Mission Icon"
+              width={56} // ~w-14
+              height={56} // ~h-14
+              className="mb-4"
+            />
             <h3 className="text-lg font-semibold mb-2">Mission</h3>
             <p className="text-sm leading-relaxed max-w-xs">
               Empowering people with disabilities <br />
@@ -77,7 +84,14 @@ export default function AboutUsPage() {
 
           {/* Vision */}
           <div className="bg-[#6F3C72] text-white flex flex-col items-center justify-center p-10 text-center">
-            <Eye className="w-14 h-14 mb-4" strokeWidth={1.5} />
+            {/* <Eye className="w-14 h-14 mb-4" strokeWidth={1.5} /> */}
+            <Image
+              src="/vision.png" // 👈 your image path here
+              alt="Vision Icon"
+              width={56} // ~w-14
+              height={56} // ~h-14
+              className="mb-4"
+            />
             <h3 className="text-lg font-semibold mb-2">Vision</h3>
             <p className="text-sm leading-relaxed max-w-xs">
               An inclusive world where people with disabilities <br />
@@ -87,7 +101,14 @@ export default function AboutUsPage() {
 
           {/* Values */}
           <div className="bg-[#5CA15B] text-white flex flex-col items-center justify-center p-10 text-center">
-            <Gem className="w-14 h-14 mb-4" strokeWidth={1.5} />
+            {/* <Gem className="w-14 h-14 mb-4" strokeWidth={1.5} /> */}
+            <Image
+              src="/values.png" // 👈 your image path here
+              alt="Values Icon"
+              width={56} // ~w-14
+              height={56} // ~h-14
+              className="mb-4"
+            />
             <h3 className="text-lg font-semibold mb-2">Values</h3>
             <p className="text-sm leading-relaxed max-w-xs">
               An inclusive world where people with disabilities <br />

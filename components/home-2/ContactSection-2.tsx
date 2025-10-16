@@ -1,11 +1,19 @@
 "use client";
 import { Mail, Phone, MapPin, Facebook, Instagram, X } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function ContactSection2() {
   return (
     <section className="w-full py-16 px-6 md:px-12 lg:px-24 bg-white">
-      <div className="max-w-7xl mx-auto text-center mb-12">
+      {/* Section Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="max-w-7xl mx-auto text-center mb-12"
+      >
         <div className="inline-block bg-[#61B95D] text-white text-sm font-medium px-4 py-2 rounded-sm mb-4">
           Contact Us
         </div>
@@ -16,13 +24,25 @@ export default function ContactSection2() {
           Fill a query about your need, or just a general enquiry, we would love
           to hear from you!
         </p>
-      </div>
+      </motion.div>
 
       <div className="relative max-w-5xl mx-auto">
         {/* White form container */}
-        <div className="relative bg-white shadow-2xl rounded-2xl p-8 md:p-12">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="relative bg-white shadow-2xl rounded-2xl p-8 md:p-12"
+        >
           {/* Green card overlapping */}
-          <div className="md:absolute -left-6 md:-left-28 md:top-[17%] bg-[#61B95D] rounded-xl text-white p-8 w-full md:w-[320px] shadow-xl">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="md:absolute -left-6 md:-left-28 md:top-[17%] bg-[#61B95D] rounded-xl text-white p-8 w-full md:w-[320px] shadow-xl"
+          >
             <h3 className="text-xl font-semibold mb-6">Contact Us</h3>
             <div className="space-y-5 text-sm">
               <div className="flex items-start">
@@ -64,10 +84,16 @@ export default function ContactSection2() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Form area */}
-          <form className="md:ml-[200px] space-y-6 py-6">
+          <motion.form
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="md:ml-[200px] space-y-6 py-6"
+          >
             <div className="grid md:grid-cols-2 gap-6">
               <input
                 type="text"
@@ -99,8 +125,8 @@ export default function ContactSection2() {
             >
               Submit
             </button>
-          </form>
-        </div>
+          </motion.form>
+        </motion.div>
       </div>
     </section>
   );

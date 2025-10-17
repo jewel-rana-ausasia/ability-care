@@ -1,11 +1,27 @@
 "use client";
 
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useMemo, useState } from "react";
 import { Plus } from "lucide-react";
 import { motion } from "framer-motion";
+import { servicesData } from "@/lib/services-data";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 const ServicesSection3: FC = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const cardsPerPage = 3;
+  const totalPages = Math.ceil(servicesData.length / cardsPerPage);
+
+  const paginatedServices = useMemo(() => {
+    const start = (currentPage - 1) * cardsPerPage;
+    return servicesData.slice(start, start + cardsPerPage);
+  }, [currentPage]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
   // Card container animation with staggered children
   const cardContainer = {
     hidden: {},
@@ -20,53 +36,42 @@ const ServicesSection3: FC = () => {
   // Individual card fade-up
   const cardVariants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeInOut" as const } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeInOut" as const },
+    },
   };
 
   // Icon animation
   const iconVariants = {
     hidden: { scale: 0, opacity: 0 },
-    visible: { scale: 1, opacity: 1, transition: { duration: 0.6, ease: "easeInOut" as const } },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeInOut" as const },
+    },
   };
 
   // Text animation
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" as const } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeInOut" as const },
+    },
   };
 
   // Button animation
   const buttonVariants = {
     hidden: { scale: 0.9, opacity: 0 },
-    visible: { scale: 1, opacity: 1, transition: { duration: 0.5, ease: "easeInOut" as const } },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeInOut" as const },
+    },
   };
-
-  const services = [
-    {
-      image: "/service1.png",
-      icon: "/home-icon1.png",
-      title: "Group/Centre Activities",
-      description:
-        "Join our Group/Centre Activities for social connection, skill-building & fun in a supportive environment.",
-      buttonColor: "#9C55A1",
-    },
-    {
-      image: "/service-2.png",
-      icon: "/home-icon2.png",
-      title: "Development of Life Skills",
-      description:
-        "We will support you and help you learn the skills you need to work well & become a productive community member.",
-      buttonColor: "#47A046",
-    },
-    {
-      image: "/service3.png",
-      icon: "/home-icon3.png",
-      title: "Assist Travel / Transport",
-      description:
-        "Our Assist Travel & Transport service helps you travel safely & independently, whether for daily needs.",
-      buttonColor: "#9C55A1",
-    },
-  ];
 
   return (
     <section className="relative -mt-32 bg-[#F6EFF7] py-20 px-6">
@@ -88,7 +93,7 @@ const ServicesSection3: FC = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        {services.map((service, index) => (
+        {paginatedServices.map((service, index) => (
           <motion.div
             key={index}
             className="bg-white shadow-lg overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300"
@@ -106,12 +111,19 @@ const ServicesSection3: FC = () => {
                 />
 
                 {/* Icon */}
-                <motion.div
-                  className="absolute left-1/2 -bottom-4 transform -translate-x-1/2 bg-white w-16 h-16 rounded-full flex items-center justify-center shadow-md"
-                  variants={iconVariants}
+                <div
+                  className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full flex items-center justify-center shadow-lg"
+                  style={{ backgroundColor: service.color }}
                 >
-                  <Image src={service.icon} alt={`${service.title} icon`} width={40} height={40} />
-                </motion.div>
+                  {service.icon ? (
+                    <Image
+                      src={service.icon}
+                      alt="Service Icon"
+                      width={55}
+                      height={55}
+                    />
+                  ) : null}
+                </div>
               </div>
             </div>
 
@@ -124,29 +136,64 @@ const ServicesSection3: FC = () => {
                 >
                   {service.title}
                 </motion.h3>
-                <motion.p className="text-gray-600 text-sm leading-relaxed" variants={textVariants}>
+                <motion.p
+                  className="text-gray-600 text-sm leading-relaxed line-clamp-2"
+                  variants={textVariants}
+                >
                   {service.description}
                 </motion.p>
               </motion.div>
 
               {/* Button */}
-              <motion.div variants={buttonVariants} whileHover={{ scale: 1.05 }} className="mt-8">
-                <button
-                  className={`mx-auto flex justify-center items-center gap-1 text-[${service.buttonColor}] border border-[${service.buttonColor}] px-6 py-2 rounded-full text-sm font-medium hover:bg-[${service.buttonColor}] hover:text-white transition-colors duration-300`}
+              <motion.div
+                variants={buttonVariants}
+                whileHover={{ scale: 1.05 }}
+                className="flex justify-center mt-8"
+              >
+                <Link
+                  href={`/home3/our-services/${service.slug}`}
+                  style={{
+                    color: service.color,
+                    borderColor: service.color,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "0.25rem",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.backgroundColor =
+                      service.color;
+                    (e.currentTarget as HTMLElement).style.color = "#fff";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.backgroundColor =
+                      "transparent";
+                    (e.currentTarget as HTMLElement).style.color =
+                      service.color;
+                  }}
+                  className="mx-auto border px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300"
                 >
                   Read More <Plus size={14} />
-                </button>
+                </Link>
               </motion.div>
             </div>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Dots */}
+      {/* Pagination Dots */}
       <div className="flex justify-center mt-12 gap-3">
-        <span className="w-3 h-3 rounded-full bg-[#9C55A1]"></span>
-        <span className="w-3 h-3 rounded-full border border-[#9C55A1]"></span>
-        <span className="w-3 h-3 rounded-full border border-[#9C55A1]"></span>
+        {Array.from({ length: totalPages }).map((_, i) => (
+          <motion.button
+            key={i}
+            onClick={() => handlePageChange(i + 1)}
+            className={`w-3 h-3 rounded-full border border-[#9C55A1] ${
+              currentPage === i + 1 ? "bg-[#9C55A1]" : "bg-transparent"
+            }`}
+            whileHover={{ scale: 1.2 }}
+            transition={{ duration: 0.2 }}
+          />
+        ))}
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion"; // <-- Import Framer Motion
+import Image from "next/image";
 
 export default function HeroSection2() {
   const slides = [
@@ -67,10 +68,15 @@ export default function HeroSection2() {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div
-              className="relative inset-0 lg:bg-cover bg-center lg:bg-no-repeat flex items-center min-h-[70vh] sm:min-h-[80vh]"
-              style={{ backgroundImage: `url(${slide.image})` }}
-            >
+            <div className="relative w-full min-h-[70vh] sm:min-h-[80vh] flex items-center">
+              {/* Full Image */}
+              <Image
+                src={slide.image}
+                alt={`Slide ${index + 1}`}
+                fill
+                className="object-cover w-full h-full"
+              />
+
               {/* Overlay */}
               <div className="absolute inset-0 bg-white/10 backdrop-blur-[1px]" />
 

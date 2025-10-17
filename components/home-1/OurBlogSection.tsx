@@ -1,12 +1,28 @@
 "use client";
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
+import { blogPosts } from "@/lib/blogData";
+import Link from "next/link";
+import { Plus } from "lucide-react";
 
 export default function OurBlogSection() {
-  const posts = [
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const cardsPerPage = 3;
+  const totalPages = Math.ceil(blogPosts.length / cardsPerPage);
+
+  const paginatedBlogs = useMemo(() => {
+    const start = (currentPage - 1) * cardsPerPage;
+    return blogPosts.slice(start, start + cardsPerPage);
+  }, [currentPage]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+  /*  const posts = [
     {
       title: "How To Promote Independence In Disability?",
       desc: "Living with a disability can present unique challenges, but it doesn't have to limit one's potential...",
@@ -25,7 +41,7 @@ export default function OurBlogSection() {
       img: "/blog-image-3.jpg",
       link: "#",
     },
-  ];
+  ]; */
 
   return (
     <section className="bg-[#F5EEF6] py-16 px-4 md:px-12 text-center">
@@ -39,7 +55,7 @@ export default function OurBlogSection() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        {posts.map((post, i) => (
+        {paginatedBlogs.map((post, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 40 }}
@@ -47,26 +63,30 @@ export default function OurBlogSection() {
             transition={{ duration: 0.5, delay: i * 0.1 }}
           >
             <Card className="overflow-hidden shadow-md rounded-2xl bg-white border-0 hover:shadow-lg transition-shadow duration-300 p-0">
-              <div className="w-full">
+              <div className="relative w-full h-80">
                 <Image
-                  src={post.img}
+                  src={post.image}
                   alt={post.title}
-                  width={400}
-                  height={400}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover object-center"
                 />
               </div>
               <CardContent className="text-left p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">
                   {post.title}
                 </h3>
-                <p className="text-gray-600 text-sm mb-5 line-clamp-2">{post.desc}</p>
-                <Button
-                  variant="link"
-                  className="text-[#6F3C72] text-base font-medium p-0 hover:underline"
+                <p className="text-gray-600 text-base mb-5 line-clamp-2">
+                  {post.conclusion.additionalText}
+                </p>
+
+                <Link
+                  href={`/home1/blogs/${post.slug}`}
+                  className={`flex justify-left items-center gap-1 font-medium mt-5`}
+                  style={{ color: post.buttonColor }}
                 >
-                  Read More <span className="ml-1 text-lg">+</span>
-                </Button>
+                  <span>Read More</span>
+                  <Plus size={16} strokeWidth={2} />
+                </Link>
               </CardContent>
             </Card>
           </motion.div>
@@ -74,7 +94,7 @@ export default function OurBlogSection() {
       </div>
 
       {/* Pagination dots */}
-      <div className="flex justify-center mt-10 space-x-3">
+      {/* <div className="flex justify-center mt-10 space-x-3">
         {[0, 1, 2].map((dot) => (
           <div
             key={dot}
@@ -82,6 +102,21 @@ export default function OurBlogSection() {
               dot === 1 ? "bg-[#8c3cc7]" : "bg-gray-300"
             }`}
           ></div>
+        ))}
+      </div> */}
+
+      {/* Pagination Dots */}
+      <div className="flex justify-center mt-12 gap-3">
+        {Array.from({ length: totalPages }).map((_, i) => (
+          <motion.button
+            key={i}
+            onClick={() => handlePageChange(i + 1)}
+            className={`w-3 h-3 rounded-full border border-[#9C55A1] ${
+              currentPage === i + 1 ? "bg-[#9C55A1]" : "bg-transparent"
+            }`}
+            whileHover={{ scale: 1.2 }}
+            transition={{ duration: 0.2 }}
+          />
         ))}
       </div>
     </section>

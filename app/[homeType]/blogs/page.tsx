@@ -3,55 +3,18 @@ import { Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { blogPosts } from "@/lib/blogData";
 
 const BlogsPage: React.FC = () => {
   const { homeType } = useParams(); // get dynamic home type
-  const blogs = [
-    {
-      slug: "promote-independence",
-      title: "How To Promote Independence In Disability?",
-      date: "February 18, 2025",
-      image: "/blog-image-1.jpg",
-      buttonColor: "#6F3C72",
-    },
-    {
-      slug: "best-social-activities",
-      title: "What Are The Best Social Activities For Disabled?",
-      date: "February 8, 2025",
-      image: "/blog-image-2.jpg",
-      buttonColor: "#57A754",
-    },
-    {
-      slug: "occupational-therapy",
-      title: "Occupational Therapy Recommended for Seniors?",
-      date: "January 28, 2024",
-      image: "/blog-image-3.jpg",
-      buttonColor: "#6F3C72",
-    },
-    {
-      slug: "ndis-plan-tips",
-      title: "Making the Most of Your NDIS Plan: Tips for Better Support",
-      date: "January 15, 2025",
-      image: "/blog-image4.png",
-      buttonColor: "#6F3C72",
-    },
-    {
-      slug: "disability-services-independence",
-      title: "How Disability Services Help You Live Independently",
-      date: "January 2, 2025",
-      image: "/blog-image5.png",
-      buttonColor: "#57A754",
-    },
-    {
-      slug: "personal-care-support-impact",
-      title: "Understanding the Impact of Personal Care Support",
-      date: "December 25, 2024",
-      image: "/blog-image6.png",
-      buttonColor: "#6F3C72",
-    },
-  ];
+  // pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 6;
+  const totalPages = Math.ceil(blogPosts.length / postsPerPage);
+  const startIndex = (currentPage - 1) * postsPerPage;
+  const currentBlogs = blogPosts.slice(startIndex, startIndex + postsPerPage);
 
   // Framer Motion variants for animation
   const textVariant = {
@@ -64,7 +27,7 @@ const BlogsPage: React.FC = () => {
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2, duration: 0.3, ease: "easeOut" as const},
+      transition: { delay: i * 0.2, duration: 0.3, ease: "easeOut" as const },
     }),
   };
 
@@ -91,8 +54,8 @@ const BlogsPage: React.FC = () => {
       </div>
 
       {/* ===== CONTENT SECTION (Blog Cards) ===== */}
-      <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 mt-20">
-        {blogs.map((service, index) => (
+      <div className="max-w-7xl mx-auto grid md:grid-cols-3 md:gap-4 2xl:gap-6 mt-20">
+        {currentBlogs.map((service, index) => (
           <motion.div
             key={index}
             custom={index}
@@ -115,7 +78,9 @@ const BlogsPage: React.FC = () => {
             {/* Text */}
             <div className="px-6 pt-8 pb-8 text-center">
               <h4 className="font-bold text-[#6F3C72] mb-2">{service.date}</h4>
-              <h3 className="font-bold text-lg text-gray-900">{service.title}</h3>
+              <h3 className="font-bold text-lg text-gray-900">
+                {service.title}
+              </h3>
 
               <Link
                 href={`/${homeType}/blogs/${service.slug}`}
@@ -131,9 +96,18 @@ const BlogsPage: React.FC = () => {
 
       {/* Dots */}
       <div className="flex justify-center mt-12 gap-3 mb-20">
-        <span className="w-3 h-3 rounded-full bg-[#9C55A1]"></span>
-        <span className="w-3 h-3 rounded-full border border-[#9C55A1]"></span>
-        <span className="w-3 h-3 rounded-full border border-[#9C55A1]"></span>
+        {[...Array(totalPages)].map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentPage(i + 1)}
+            className={`w-3 h-3 rounded-full ${
+              currentPage === i + 1
+                ? "bg-[#9C55A1]"
+                : "border border-[#9C55A1] hover:bg-[#9C55A1] transition"
+            }`}
+            aria-current={currentPage === i + 1 ? "page" : undefined}
+          ></button>
+        ))}
       </div>
     </div>
   );

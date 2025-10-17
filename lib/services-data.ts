@@ -4,6 +4,7 @@ export interface Service {
   description: string;
   image: string;
   color: string;
+  icon?: string;
   content?: {
     intro: string[];
     features: {
@@ -22,6 +23,7 @@ export const servicesData: Service[] = [
       "Join our Group/Centre Activities for social connection, skill-building & fun in a supportive environment.",
     image: "/service1.png",
     color: "#9C55A1",
+    icon: "/service1-icon.png",
   },
   {
     slug: "development-life-skills",
@@ -30,6 +32,7 @@ export const servicesData: Service[] = [
       "We support you in learning the skills you need to work well & become a productive community member.",
     image: "/service-2.png",
     color: "#47A046",
+    icon: "/service2-icon.png",
   },
   {
     slug: "assist-travel-transport",
@@ -38,6 +41,7 @@ export const servicesData: Service[] = [
       "Our Assist Travel & Transport service helps you travel safely & independently, whether for daily needs.",
     image: "/service3.png",
     color: "#9C55A1",
+    icon: "/assist-travel-or-transport-icon.png",
   },
   {
     slug: "household-tasks",

@@ -7,7 +7,6 @@ import { faqs } from "@/lib/fagData";
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
- 
   return (
     <section className="w-full bg-[#F5EEF6] py-16 flex flex-col items-center justify-center text-center">
       {/* Heading Section - Centered */}

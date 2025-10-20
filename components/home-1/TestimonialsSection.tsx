@@ -1,11 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Quote } from "lucide-react";
 import { motion } from "framer-motion";
+import { testimonialsData, Testimonial } from "@/lib/testimonialsData";
 
 const TestimonialsSection: FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const currentTestimonial: Testimonial =
+    testimonialsData.testimonials[currentIndex];
+
   return (
     <section>
       {/* Section Header */}
@@ -18,17 +24,10 @@ const TestimonialsSection: FC = () => {
       >
         <div className="relative top-24 z-10 max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-            Why Choose Us?
+            {testimonialsData.header}
           </h2>
           <p className="text-white text-sm md:text-base leading-relaxed">
-            At our core, we are dedicated to providing high-quality,
-            personalised support that empowers individuals with disabilities to
-            live independently and with dignity. Our experienced team is
-            committed to your well-being, ensuring you receive the care and
-            assistance you need to achieve your goals. With a strong foundation
-            of trust, respect, and integrity, we go above & beyond to create a
-            supportive and inclusive environment where you feel valued and
-            heard.
+            {testimonialsData.description}
           </p>
         </div>
       </motion.div>
@@ -68,8 +67,8 @@ const TestimonialsSection: FC = () => {
             className="rounded-md overflow-hidden text-white relative max-w-[440px]"
           >
             <Image
-              src="/our-testimonials.jpg"
-              alt="Ability Care"
+              src={currentTestimonial.image}
+              alt={currentTestimonial.name}
               width={350}
               height={350}
               className="object-cover rounded-md"
@@ -87,20 +86,27 @@ const TestimonialsSection: FC = () => {
         >
           <Quote size={48} className="opacity-50 mb-4" />
           <p className="text-lg leading-relaxed mb-8">
-            “Thank you Vserve for helping me get my funding approved from NDIS.
-            It has brought such a positive change to my lifestyle.”
+            “{currentTestimonial.quote}”
           </p>
 
           <div>
-            <p className="font-semibold text-white">Rodger Horiott</p>
-            <p className="text-sm opacity-80">Sydney</p>
+            <p className="font-semibold text-white">
+              {currentTestimonial.name}
+            </p>
+            <p className="text-sm opacity-80">{currentTestimonial.location}</p>
           </div>
 
           {/* Dots */}
           <div className="flex gap-2 mt-6">
-            <span className="w-2.5 h-2.5 bg-white rounded-full"></span>
-            <span className="w-2.5 h-2.5 border border-white rounded-full"></span>
-            <span className="w-2.5 h-2.5 border border-white rounded-full"></span>
+            {testimonialsData.testimonials.map((_, idx) => (
+              <span
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`w-2.5 h-2.5 rounded-full cursor-pointer ${
+                  currentIndex === idx ? "bg-white" : "border border-white"
+                }`}
+              ></span>
+            ))}
           </div>
         </motion.div>
       </motion.div>

@@ -7,8 +7,6 @@ import { faqs } from "@/lib/fagData";
 export default function FAQSection3() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
- 
-
   return (
     <section className="w-full bg-white py-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 px-6 lg:px-8 items-start">
@@ -50,9 +48,7 @@ export default function FAQSection3() {
                       opacity: isOpen ? 1 : 0,
                     }}
                   >
-                    <p className="text-gray-600 mt-3 text-left">
-                      {faq.answer}
-                    </p>
+                    <p className="text-gray-600 mt-3 text-left">{faq.answer}</p>
                   </div>
                 </div>
               );

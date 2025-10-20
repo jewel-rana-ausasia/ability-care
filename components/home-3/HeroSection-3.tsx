@@ -8,44 +8,12 @@ import "swiper/css/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion, Easing } from "framer-motion";
+import { heroSlides } from "@/lib/heroSectionText";
 
 // Define a cubic-bezier easing (easeOut)
 const easeOut: Easing = [0.42, 0, 0.58, 1];
 
 export default function HeroSection() {
-  const slides = [
-    {
-      image: "/image/home-3/home-page-3-slide-image-1.jpg",
-      title: (
-        <>
-          Ability Care –<br /> NDIS Service Provider <br /> in Melbourne
-        </>
-      ),
-      description:
-        "Ability Care, a trusted NDIS provider, is dedicated to trust, respect, empathy & integrity. We empower participants with personalised, exceptional disability support services.",
-    },
-    {
-      image: "/image/home-2/slide-image-2.jpg",
-      title: (
-        <>
-          Empowering Lives –<br /> Supporting Your Journey
-        </>
-      ),
-      description:
-        "We’re committed to helping you live independently and confidently with high-quality NDIS support tailored to your goals.",
-    },
-    {
-      image: "/image/home-2/slide-image-3.jpg",
-      title: (
-        <>
-          Your Choice –<br /> Your Care, Your Way
-        </>
-      ),
-      description:
-        "Partner with Ability Care to experience compassionate, person-centered disability services that put your needs first.",
-    },
-  ];
-
   // Motion variants
   const contentVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -58,7 +26,11 @@ export default function HeroSection() {
 
   const bgVariants = {
     hidden: { scale: 1.1, opacity: 0 },
-    visible: { scale: 1, opacity: 1, transition: { duration: 1.5, ease: easeOut } },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: { duration: 1.5, ease: easeOut },
+    },
   };
 
   return (
@@ -74,7 +46,7 @@ export default function HeroSection() {
         loop
         className="w-full h-full custom-swiper"
       >
-        {slides.map((slide, index) => (
+        {heroSlides.map((slide, index) => (
           <SwiperSlide key={index}>
             <motion.div
               className="relative w-full h-[85vh] 2xl:h-[80vh] flex items-center bg-center bg-no-repeat bg-cover md:bg-cover"
@@ -97,22 +69,39 @@ export default function HeroSection() {
                   animate="visible"
                 >
                   <motion.h1
-                    className="text-xl lg:text-3xl 2xl:text-5xl font-bold leading-tight text-white"
-                    custom={0}
-                    variants={contentVariants}
+                    className="text-2xl sm:text-xl md:text-2xl lg:text-3xl 2xl:text-5xl font-bold leading-tight text-white"
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.8, delay: 0.2 },
+                    }}
                   >
-                    {slide.title}
+                    {slide.title.split("\n").map((line, i) => (
+                      <span key={i}>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
                   </motion.h1>
 
                   <motion.p
-                    className="text-sm lg:text-base 2xl:text-lg text-white/90 max-w-xl"
-                    custom={0.3}
-                    variants={contentVariants}
+                    className="text-xs sm:text-sm md:text-base 2xl:text-lg leading-relaxed opacity-90 max-w-xl mx-auto lg:mx-0 text-white"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.8, delay: 0.4 },
+                    }}
                   >
                     {slide.description}
                   </motion.p>
 
-                  <motion.div custom={0.6} variants={contentVariants} whileHover={{ scale: 1.01 }}>
+                  <motion.div
+                    custom={0.6}
+                    variants={contentVariants}
+                    whileHover={{ scale: 1.01 }}
+                  >
                     <Button className="bg-[#498B46] hover:bg-[#3d7a3b] text-white text-sm sm:text-base md:text-lg px-5 sm:px-8 py-3 sm:py-4 rounded-md font-semibold shadow-md transition-all">
                       Read More
                     </Button>

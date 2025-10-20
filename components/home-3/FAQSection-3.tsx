@@ -3,9 +3,12 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { faqs } from "@/lib/fagData";
+import { contactData } from "@/lib/contactData";
 
 export default function FAQSection3() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { formFields, buttonText } = contactData;
+  const [nameField, phoneField, emailField, messageField] = formFields;
 
   return (
     <section className="w-full bg-white py-20">
@@ -63,22 +66,22 @@ export default function FAQSection3() {
           </h3>
           <form className="space-y-4">
             <input
-              type="text"
-              placeholder="Name:"
+              type={nameField.type}
+              placeholder={nameField.placeholder}
               className="w-full px-4 py-3 rounded-md bg-white text-gray-800 placeholder-gray-500 focus:outline-none"
             />
             <input
-              type="text"
-              placeholder="Phone:"
+              type={phoneField.type}
+              placeholder={phoneField.placeholder}
               className="w-full px-4 py-3 rounded-md bg-white text-gray-800 placeholder-gray-500 focus:outline-none"
             />
             <input
-              type="email"
-              placeholder="Email:"
+              type={emailField.type}
+              placeholder={emailField.placeholder}
               className="w-full px-4 py-3 rounded-md bg-white text-gray-800 placeholder-gray-500 focus:outline-none"
             />
             <textarea
-              placeholder="Message:"
+              placeholder={messageField.placeholder}
               rows={4}
               className="w-full px-4 py-3 rounded-md bg-white text-gray-800 placeholder-gray-500 focus:outline-none resize-none"
             ></textarea>
@@ -86,7 +89,7 @@ export default function FAQSection3() {
               type="submit"
               className="bg-white text-gray-900 font-semibold px-6 py-2 rounded-full hover:bg-gray-100 transition-all w-[120px]"
             >
-              Submit
+              {buttonText}
             </button>
           </form>
         </div>

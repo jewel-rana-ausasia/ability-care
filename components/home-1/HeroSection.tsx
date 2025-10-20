@@ -2,8 +2,11 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { heroSlides } from "@/lib/heroSectionText";
 
 export default function HeroSection() {
+  const firstSlide = heroSlides[0];
+
   return (
     <>
       {/* ===== HERO SECTION ===== */}
@@ -24,10 +27,12 @@ export default function HeroSection() {
                 transition={{ delay: 0.2, duration: 0.6 }}
                 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight"
               >
-                Ability Care -<br />
-                NDIS Service Provider
-                <br />
-                in Melbourne
+                {firstSlide.title.split("\n").map((line, i) => (
+                  <span key={i}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
               </motion.h1>
 
               <motion.p
@@ -36,9 +41,7 @@ export default function HeroSection() {
                 transition={{ delay: 0.5, duration: 0.7 }}
                 className="text-sm sm:text-base xl:text-lg leading-relaxed opacity-95 max-w-xl mx-auto lg:mx-0"
               >
-                Ability Care, a trusted NDIS provider, is dedicated to trust,
-                respect, empathy & integrity. We empower participants with
-                personalised, exceptional disability support services.
+                {firstSlide.description}
               </motion.p>
 
               <motion.button

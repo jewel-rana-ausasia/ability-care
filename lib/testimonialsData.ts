@@ -5,6 +5,7 @@ export interface Testimonial {
   name: string;
   location: string;
   image: string;
+  color: string;
 }
 
 export interface TestimonialsSectionData {
@@ -24,6 +25,7 @@ export const testimonialsData: TestimonialsSectionData = {
       name: "Rodger Horiott",
       location: "Sydney",
       image: "/our-testimonials.jpg",
+      color: "#9C55A1",
     },
     {
       quote:
@@ -31,6 +33,7 @@ export const testimonialsData: TestimonialsSectionData = {
       name: "Sarah Johnson",
       location: "Melbourne",
       image: "/our-testimonials.jpg",
+      color: "#47A046",
     },
     {
       quote:
@@ -38,6 +41,7 @@ export const testimonialsData: TestimonialsSectionData = {
       name: "Michael Lee",
       location: "Brisbane",
       image: "/our-testimonials.jpg",
+      color: "#9C55A1",
     },
   ],
 };

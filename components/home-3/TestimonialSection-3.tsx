@@ -4,31 +4,10 @@ import Image from "next/image";
 import { FC } from "react";
 import { Quote } from "lucide-react";
 import { motion } from "framer-motion";
+import { testimonialsData, Testimonial } from "@/lib/testimonialsData";
 
 const TestimonialsSection3: FC = () => {
-  const testimonials = [
-    {
-      quote:
-        "Very happy with the care and assistance provided. The staff goes above and beyond!",
-      name: "Sarah",
-      location: "Melbourne",
-      color: "#9C55A1",
-    },
-    {
-      quote:
-        "Ability Care has been a great support for me. The staff is kind & the accommodation feels like home.",
-      name: "James",
-      location: "Sydney",
-      color: "#47A046",
-    },
-    {
-      quote:
-        "Excellent respite services! The team is friendly, and the facilities are top-notch. Highly recommend!",
-      name: "Noah",
-      location: "Brisbane",
-      color: "#9C55A1",
-    },
-  ];
+  const testimonials: Testimonial[] = testimonialsData.testimonials;
 
   // Motion variants for cards
   const cardVariants = {
@@ -53,17 +32,10 @@ const TestimonialsSection3: FC = () => {
         <div className="relative text-center w-full h-[400px] mx-auto mb-12 bg-[url('/why-choose-us-bg.png')] bg-cover bg-center bg-no-repeat flex flex-col items-center px-6">
           <div className="relative top-24 z-10 max-w-3xl">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-              Why Choose Us?
+              {testimonialsData.header}
             </h2>
             <p className="text-white text-sm md:text-base leading-relaxed">
-              At our core, we are dedicated to providing high-quality,
-              personalised support that empowers individuals with disabilities
-              to live independently and with dignity. Our experienced team is
-              committed to your well-being, ensuring you receive the care and
-              assistance you need to achieve your goals. With a strong
-              foundation of trust, respect, and integrity, we go above & beyond
-              to create a supportive and inclusive environment where you feel
-              valued and heard.
+              {testimonialsData.description}
             </p>
           </div>
         </div>
@@ -117,9 +89,14 @@ const TestimonialsSection3: FC = () => {
 
           {/* Dots */}
           <div className="flex justify-center mt-10 gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-white"></span>
-            <span className="w-2.5 h-2.5 rounded-full border border-white"></span>
-            <span className="w-2.5 h-2.5 rounded-full border border-white"></span>
+            {testimonials.map((_, idx) => (
+              <span
+                key={idx}
+                className={`w-2.5 h-2.5 rounded-full ${
+                  idx === 0 ? "bg-white" : "border border-white"
+                }`}
+              ></span>
+            ))}
           </div>
         </div>
       </section>

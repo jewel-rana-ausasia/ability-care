@@ -22,26 +22,6 @@ export default function OurBlogSection() {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
-  /*  const posts = [
-    {
-      title: "How To Promote Independence In Disability?",
-      desc: "Living with a disability can present unique challenges, but it doesn't have to limit one's potential...",
-      img: "/blog-image-1.jpg",
-      link: "#",
-    },
-    {
-      title: "What Are The Best Social Activities For Disabled?",
-      desc: "Social activities are an essential part of life for everyone, regardless of ability. They can particularly benefit people with disabilities...",
-      img: "/blog-image-2.jpg",
-      link: "#",
-    },
-    {
-      title: "When Is Occupational Therapy Recommended for Seniors?",
-      desc: "Occupational therapy (OT) plays a vital role in enhancing the quality of life for seniors. As people age, they often...",
-      img: "/blog-image-3.jpg",
-      link: "#",
-    },
-  ]; */
 
   return (
     <section className="bg-[#F5EEF6] py-16 px-4 md:px-12 text-center">
@@ -92,18 +72,6 @@ export default function OurBlogSection() {
           </motion.div>
         ))}
       </div>
-
-      {/* Pagination dots */}
-      {/* <div className="flex justify-center mt-10 space-x-3">
-        {[0, 1, 2].map((dot) => (
-          <div
-            key={dot}
-            className={`w-3 h-3 rounded-full ${
-              dot === 1 ? "bg-[#8c3cc7]" : "bg-gray-300"
-            }`}
-          ></div>
-        ))}
-      </div> */}
 
       {/* Pagination Dots */}
       <div className="flex justify-center mt-12 gap-3">

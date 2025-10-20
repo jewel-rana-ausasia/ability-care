@@ -1,34 +1,28 @@
 "use client";
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
+import { blogPosts } from "@/lib/blogData"; // ✅ using same data source
+import Link from "next/link";
 
 export default function OurBlogSection2() {
-  const posts = [
-    {
-      title: "How To Promote Independence In Disability?",
-      desc: "Living with a disability can present unique challenges, but it doesn't have to limit one's potential...",
-      img: "/blog-image-1.jpg",
-      link: "#",
-    },
-    {
-      title: "What Are The Best Social Activities For Disabled?",
-      desc: "Social activities are an essential part of life for everyone, regardless of ability. They can partic...",
-      img: "/blog-image-2.jpg",
-      link: "#",
-    },
-    {
-      title: "When Is Occupational Therapy Recommended for Seniors?",
-      desc: "Occupational therapy (OT) plays a vital role in enhancing the quality of life for seniors. As people age...",
-      img: "/blog-image-3.jpg",
-      link: "#",
-    },
-  ];
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const cardsPerPage = 3;
+  const totalPages = Math.ceil(blogPosts.length / cardsPerPage);
+
+  const paginatedBlogs = useMemo(() => {
+    const start = (currentPage - 1) * cardsPerPage;
+    return blogPosts.slice(start, start + cardsPerPage);
+  }, [currentPage]);
+
+  const handlePageChange = (page: number) => setCurrentPage(page);
 
   return (
-    <section className="relative  -top-20 bg-[#F5EEF6] py-16 px-4 md:px-12 text-center">
+    <section className="relative -top-20 bg-[#F5EEF6] py-16 px-4 md:px-12 text-center">
+      {/* === SECTION HEADER === */}
       <div className="flex flex-col items-center mb-10">
         <span className="bg-[#61B95D] text-white font-semibold px-4 py-2 mb-3 rounded">
           Our Blog
@@ -38,8 +32,9 @@ export default function OurBlogSection2() {
         </h2>
       </div>
 
+      {/* === BLOG GRID === */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        {posts.map((post, i) => (
+        {paginatedBlogs.map((post, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 40 }}
@@ -47,41 +42,52 @@ export default function OurBlogSection2() {
             transition={{ duration: 0.5, delay: i * 0.1 }}
           >
             <Card className="overflow-hidden shadow-md bg-white border-0 hover:shadow-lg transition-shadow duration-300 p-0 !rounded-none">
-              <div className="w-full">
+              {/* ✅ Responsive Image using Tailwind classes */}
+              <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96">
                 <Image
-                  src={post.img}
+                  src={post.image}
                   alt={post.title}
-                  width={400}
-                  height={400}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover object-center"
                 />
               </div>
+
               <CardContent className="text-left p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-3">
                   {post.title}
                 </h3>
-                <p className="text-gray-600 text-sm mb-5">{post.desc}</p>
-                <Button
-                  variant="link"
-                  className="px-4 py-2 text-white bg-[#6F3C72] rounded-full"
+                <p className="text-gray-600 text-sm md:text-base mb-5 line-clamp-2">
+                  {post.conclusion?.additionalText || post.title}
+                </p>
+
+                {/* ✅ Dynamic "Read More" Link Button */}
+                <Link
+                  href={`/home1/blogs/${post.slug}`}
+                  className={`inline-flex items-center justify-center px-5 py-2 rounded-full text-white font-medium text-sm sm:text-base transition-transform duration-200 hover:scale-105`}
+                  style={{ backgroundColor: post.buttonColor }}
                 >
                   Read More <span className="ml-1 text-lg">+</span>
-                </Button>
+                </Link>
               </CardContent>
             </Card>
           </motion.div>
         ))}
       </div>
 
-      {/* Pagination dots */}
+      {/* === PAGINATION DOTS === */}
       <div className="flex justify-center mt-10 space-x-3">
-        {[0, 1, 2].map((dot) => (
-          <div
-            key={dot}
-            className={`w-3 h-3 rounded-full ${
-              dot === 1 ? "bg-[#9A549F]" : "bg-gray-300"
+        {Array.from({ length: totalPages }).map((_, i) => (
+          <motion.button
+            key={i}
+            onClick={() => handlePageChange(i + 1)}
+            className={`w-3 h-3 rounded-full transition-all ${
+              currentPage === i + 1
+                ? "bg-[#9A549F] scale-110"
+                : "bg-gray-300 hover:bg-[#9A549F]/60"
             }`}
-          ></div>
+            whileHover={{ scale: 1.2 }}
+            transition={{ duration: 0.2 }}
+          />
         ))}
       </div>
     </section>

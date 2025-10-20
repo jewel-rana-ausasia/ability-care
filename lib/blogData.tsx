@@ -220,7 +220,7 @@ export const blogPosts: BlogPost[] = [
     "title": "Top Benefits of Assistive Technology for People with Disabilities",
     "date": "March 10, 2025",
     "image": "/blog-image-7.jpg",
-    "buttonColor": "#57A754",
+    "buttonColor": "#6F3C72",
     "content": [
       {
         "title": "1. Increased Independence:",
@@ -250,7 +250,7 @@ export const blogPosts: BlogPost[] = [
     "title": "The Importance of Mental Health Support in Disability Care",
     "date": "March 2, 2025",
     "image": "/blog-image-8.jpg",
-    "buttonColor": "#6F3C72",
+    "buttonColor": "#57A754",
     "content": [
       {
         "title": "1. Emotional Well-being:",
@@ -280,7 +280,7 @@ export const blogPosts: BlogPost[] = [
     "title": "Why Community Participation Matters for People with Disabilities",
     "date": "February 20, 2025",
     "image": "/blog-image-9.jpg",
-    "buttonColor": "#57A754",
+    "buttonColor": "#6F3C72",
     "content": [
       {
         "title": "1. Building Confidence:",

@@ -77,7 +77,7 @@ export default function HeroSection() {
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <motion.div
-              className="relative w-full h-[80vh] flex items-center bg-center bg-no-repeat bg-cover md:bg-cover"
+              className="relative w-full h-[85vh] 2xl:h-[80vh] flex items-center bg-center bg-no-repeat bg-cover md:bg-cover"
               initial="hidden"
               animate="visible"
               variants={bgVariants}
@@ -90,14 +90,14 @@ export default function HeroSection() {
               <div className="absolute inset-0 hidden md:block bg-gradient-to-tr from-[#356634] to-[#356634]/0" />
 
               {/* Content */}
-              <div className="relative z-10 w-full max-w-7xl mx-auto py-12 flex flex-col justify-center h-full">
+              <div className="relative z-10 w-full max-w-5xl 2xl:max-w-7xl mx-auto py-12 flex flex-col justify-center h-full">
                 <motion.div
-                  className="max-w-2xl text-left space-y-5 sm:space-y-6"
+                  className="max-w-3xl text-left space-y-4 2xl:space-y-6"
                   initial="hidden"
                   animate="visible"
                 >
                   <motion.h1
-                    className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-white"
+                    className="text-xl lg:text-3xl 2xl:text-5xl font-bold leading-tight text-white"
                     custom={0}
                     variants={contentVariants}
                   >
@@ -105,7 +105,7 @@ export default function HeroSection() {
                   </motion.h1>
 
                   <motion.p
-                    className="text-sm sm:text-base md:text-lg text-white/90 max-w-xl"
+                    className="text-sm lg:text-base 2xl:text-lg text-white/90 max-w-xl"
                     custom={0.3}
                     variants={contentVariants}
                   >
